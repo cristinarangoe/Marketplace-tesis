@@ -9,7 +9,7 @@ type FormData = {
   stock: number;
 };
 
-const FormAddProduct = () => {
+const FormEditProduct = ({ product }: any) => {
   const {
     register,
     setValue,
@@ -17,45 +17,46 @@ const FormAddProduct = () => {
     formState: { errors },
   } = useForm<FormData>();
   const onSubmit = handleSubmit((data) => console.log(data));
-
   return (
     <div>
       <form
         onSubmit={onSubmit}
         className="flex flex-col justify-center mx-auto bg-red-300 px-5 w-1/2"
       >
-        <h2>Este es el formulario para añadir productos nuevos a tu catalogo: </h2>
+        <h2>
+          Este es el formulario para añadir productos nuevos a tu catalogo:{" "}
+        </h2>
         <div className="flex flex-col w-1/2">
           <label className="">Nombre del producto:</label>
-          <input
+          <input defaultValue={product.nombre} placeholder={product.nombre}
             {...(register("name"), { required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>
         <div className="flex flex-col w-1/2">
           <label className="">Precio del producto:</label>
-          <input
+          <input defaultValue={product.precio} placeholder={product.precio}
             {...(register("price"), { required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>
         <div className="flex flex-col w-1/2">
           <label className="">Descripción del producto:</label>
-          <input
+          <input defaultValue={product.descripcion} placeholder={product.descripcion}
             {...(register("description"), { required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>
         <div className="flex flex-col w-1/2">
           <label className="">URL de la imágen del producto</label>
-          <input
+          <input defaultValue={product.imagen} placeholder={product.imagen}
             {...(register("image"), { required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>
         <div className="flex flex-col w-1/2">
           <label className="">Cantidad de unidades en inventario</label>
-          <input
+          <input defaultValue={product.stock} placeholder={product.stock}
             {...(register("stock"), { required: true })}
             className="mr-8 p-1 rounded-md"
           />
@@ -71,4 +72,4 @@ const FormAddProduct = () => {
   );
 };
 
-export default FormAddProduct;
+export default FormEditProduct;

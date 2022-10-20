@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Product from "../components/Products/Product";
+import Navbar from "../../components/Navbar";
+import Product from "../../components/Products/Product";
 
 const ProductsContainer = () => {
   let products: object[] = [

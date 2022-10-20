@@ -1,8 +1,8 @@
 import React from "react";
-import AddProductCartButton from "../components/Cart/AddProductCartButton";
-import Navbar from "../components/Navbar";
-import ProductToCart from "../components/Products/ProductToCart";
-import { Item } from "../types";
+import AddProductCartButton from "../../components/Cart/AddProductCartButton";
+import Navbar from "../../components/Navbar";
+import ProductToCart from "../../components/Products/ProductToCart";
+import { Item } from "../../types";
 
 function ProductDetail() {
   let producto: Item = {
