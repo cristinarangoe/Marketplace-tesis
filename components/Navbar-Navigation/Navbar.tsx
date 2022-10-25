@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import Image from 'next/image'
 import DialogClientBusiness from "./DialogClientBusiness";
-import { useGlobalContext } from '../Context/Index'
+import { useGlobalContext } from '../../Context/Index'
 
 const Navbar = () => {
 
@@ -50,7 +50,7 @@ const Navbar = () => {
             <li className="mr-5">
                 <DialogClientBusiness/>
             </li>
-            <li className="">
+            <li className="flex">
               <Link href="/Cart">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

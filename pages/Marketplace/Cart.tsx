@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import CartItem from "../../components/Cart/CartItem";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar-Navigation/Navbar";
 import { useGlobalContext } from '../../Context/Index'
 
 

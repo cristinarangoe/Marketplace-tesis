@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar-Navigation/Navbar";
 import Product from "../../components/Products/Product";
 
 const ProductsContainer = () => {

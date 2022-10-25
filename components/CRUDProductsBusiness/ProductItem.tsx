@@ -21,7 +21,7 @@ const ProductItem = ({producto} : any) => {
       </div>
       <div className="flex flex-row basis-1/5">
         <div className="basis-1/2">
-          <Link href="/BusinessProducts/EditProductContainer">
+          <Link href="/BusinessPage/EditProductContainer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
