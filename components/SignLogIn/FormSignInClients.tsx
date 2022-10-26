@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { registerClient } from '../../lib/auth/workerRegister';
+import { registerClient } from '../../lib/auth';
 import { ClientSchema } from '../../types';
 
 type FormData = {
