@@ -3,10 +3,11 @@ import AddProductCartButton from '../Cart/AddProductCartButton'
 import ProductCount from './ProductCount'
 
 import { useGlobalContext } from '../../Context/Index'
+import { Item } from '../../types';
 
 
 
-function ProductToCart({producto, initial} : any) {
+function ProductToCart({producto, initial} : {producto: Item, initial: number}) {
 
     const [cantParcial, setCantParcial] = useState(initial);
 

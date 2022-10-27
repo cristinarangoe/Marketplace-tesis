@@ -3,7 +3,9 @@ import Link from "next/link";
 import React from "react";
 import { Item } from "../../types";
 
-const ProductItem = ({producto} : any) => {
+
+//This is the product that is in the business CRUD Page, each of the products that the business has
+const ProductItem = ({producto} : {producto : Item}) => {
 
   return (
     <div className="flex flex-row items-center border-b-2 border-b-gray-100">

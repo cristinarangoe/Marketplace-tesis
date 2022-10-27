@@ -12,12 +12,13 @@ const Navbar = () => {
     <div className="">
       <div className="flex flex-row w-full py-3 bg-cyan-300">
         <div className="ml-5">
-        <Image src="/Logo.png" alt="logo" width={40} height={16} />
+          <Link href='/Marketplace/Home'><Image src="/Logo.png" alt="logo" width={40} height={16} /></Link>
+        
         </div>
         <div className="flex flex-row ml-5">
           <ul className="flex flex-row ">
             <li  className="mr-5 text-black text-xl font-medium hover:text-yellow-500">
-              <Link href="/" >Opcion 1</Link>
+              <Link href="/Marketplace/ProductsContainer" >Productos</Link>
             </li>
             <li className="mr-5 text-black text-xl font-medium hover:text-yellow-500">
               <Link href="/">Opcion 2</Link>
@@ -51,7 +52,7 @@ const Navbar = () => {
                 <DialogClientBusiness/>
             </li>
             <li className="flex">
-              <Link href="/Cart">
+              <Link href="/Marketplace/Cart">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

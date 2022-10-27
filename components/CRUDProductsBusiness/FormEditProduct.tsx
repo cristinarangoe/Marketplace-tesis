@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Item } from "../../types";
 
 type FormData = {
   name: string;
@@ -9,7 +10,11 @@ type FormData = {
   stock: number;
 };
 
-const FormEditProduct = ({ product }: any) => {
+interface ItemProps {
+  product: Item;
+}
+
+const FormEditProduct: React.FC<ItemProps> = ({ product }) => {
   const {
     register,
     setValue,
@@ -29,35 +34,35 @@ const FormEditProduct = ({ product }: any) => {
         <div className="flex flex-col w-1/2">
           <label className="">Nombre del producto:</label>
           <input defaultValue={product.nombre} placeholder={product.nombre}
-            {...(register("name"), { required: true })}
+            {...register("name", {required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>
         <div className="flex flex-col w-1/2">
           <label className="">Precio del producto:</label>
-          <input defaultValue={product.precio} placeholder={product.precio}
-            {...(register("price"), { required: true })}
+          <input type="number" defaultValue={product.precio} placeholder={product.precio.toString()}
+            {...register("price", { required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>
         <div className="flex flex-col w-1/2">
           <label className="">Descripción del producto:</label>
           <input defaultValue={product.descripcion} placeholder={product.descripcion}
-            {...(register("description"), { required: true })}
+            {...register("description", { required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>
         <div className="flex flex-col w-1/2">
           <label className="">URL de la imágen del producto</label>
           <input defaultValue={product.imagen} placeholder={product.imagen}
-            {...(register("image"), { required: true })}
+            {...register("image", { required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>
         <div className="flex flex-col w-1/2">
           <label className="">Cantidad de unidades en inventario</label>
-          <input defaultValue={product.stock} placeholder={product.stock}
-            {...(register("stock"), { required: true })}
+          <input type="number" defaultValue={product.stock} placeholder={product.stock.toString()}
+            {...register("stock", { required: true })}
             className="mr-8 p-1 rounded-md"
           />
         </div>

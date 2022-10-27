@@ -1,15 +1,16 @@
 import React from "react";
 import Navbar from "../../components/Navbar-Navigation/Navbar";
 import Product from "../../components/Products/Product";
+import { Item } from "../../types";
 
 const ProductsContainer = () => {
-  let products: object[] = [
+  let products: Item[] = [
     {
       id: "001",
       nombre: "Plato mexicano",
       precio: 12000,
       descripcion: "plato con deliciosos ingredientes",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Mexicano",
       stock: 5,
     },
@@ -18,7 +19,7 @@ const ProductsContainer = () => {
       nombre: "Nachos",
       precio: 10000,
       descripcion: "plato con deliciosos ingredientes",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Mexicano",
       stock: 5,
     },
@@ -27,7 +28,7 @@ const ProductsContainer = () => {
       nombre: "Arepa blanca pequeña",
       precio: 15000,
       descripcion: "arepa hecha con maiz 100% colombiano",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Arepas",
       stock: 5,
     },
@@ -36,7 +37,7 @@ const ProductsContainer = () => {
       nombre: "Arepa blanca grande",
       precio: 8000,
       descripcion: "arepa version grande blanca",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Arepas",
       stock: 5,
     },
@@ -45,7 +46,7 @@ const ProductsContainer = () => {
       nombre: "Arepa de queso",
       precio: 11000,
       descripcion: "Queso mozzarella 100% natural",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Arepas",
       stock: 5,
     },
@@ -54,7 +55,7 @@ const ProductsContainer = () => {
       nombre: "Chorizo de cerdo",
       precio: 20000,
       descripcion: "Hecho con ingredientes de la mejor calidad",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Cárnicos",
       stock: 5,
     },
@@ -63,7 +64,7 @@ const ProductsContainer = () => {
       nombre: "Carne de hamburguesa",
       precio: 22000,
       descripcion: "Carne de res",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Cárnicos",
       stock: 5,
     },
@@ -72,7 +73,7 @@ const ProductsContainer = () => {
       nombre: "Guacamole",
       precio: 15000,
       descripcion: "Hecho sin conservantes",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Mexicano",
       stock: 5,
     },
@@ -81,7 +82,7 @@ const ProductsContainer = () => {
       nombre: "Salsa de pimentón",
       precio: 15000,
       descripcion: "Pimenton",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Mexicano",
       stock: 5,
     },
@@ -91,8 +92,8 @@ const ProductsContainer = () => {
     <div>
         <Navbar/>
       <div className="grid  justify-items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-10">
-        {products.map((prod) => (
-          <Product product={prod} />
+        {products.map((prod, index) => (
+          <Product product={prod} key={index} />
         ))}
       </div>
     </div>

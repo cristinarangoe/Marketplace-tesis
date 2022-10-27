@@ -4,7 +4,7 @@ import { ItemInCart } from "../../types";
 import ProductCount from "../Products/ProductCount";
 
 interface ProductProps {
-  producto: any;
+  producto: ItemInCart;
 }
 
 const CartItem: React.FC<ProductProps> = ({ producto }) => {
@@ -53,7 +53,7 @@ const CartItem: React.FC<ProductProps> = ({ producto }) => {
         <h2 className="text-lg">${producto.total}</h2>
       </div>
       <div className="flex justify-center basis-1/6">
-        <button className="" onClick={() => removeItemProp(producto.item)}>
+        <button className="" onClick={() => removeItemProp(producto.id)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
