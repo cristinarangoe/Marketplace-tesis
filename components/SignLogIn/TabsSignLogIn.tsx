@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 
-const TabsSignLogIn = ({login , signin } : any) => {
+const TabsSignLogIn = ({login , signin } : {login: JSX.Element, signin: JSX.Element}) => {
 
   const [active, setActive] = useState({tab1: true, tab2: false});
 

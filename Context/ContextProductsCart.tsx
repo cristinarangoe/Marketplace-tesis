@@ -9,10 +9,10 @@ import { Item, ItemInCart } from "../types";
 
 interface GlobalContextProps {
   productsCartProp: ItemInCart[];
-  addItemProp: (item: Item, quantity: any) => void;
-  removeItemProp: (idItem: any) => void;
+  addItemProp: (item: Item, quantity: number) => void;
+  removeItemProp: (idItem: string) => void;
   clearProp: () => void;
-  isInCartProp: (idItem: any) => boolean;
+  isInCartProp: (idItem: string) => boolean;
   finalQuantityProp: number;
   setFinalQuantityProp: Dispatch<SetStateAction<number>>;
   totalCostProp: number;
@@ -72,13 +72,18 @@ function ContextProductsCart({ children } : Props) {
   }
 
   //funcion de remover un item del carrito, id
-  function removeItem(idItem: any) {
-    let prodEliminar: any = productsCart.find(
+  function removeItem(idItem: string) {
+    let prodEliminar: ItemInCart | undefined = productsCart.find(
       (prod: ItemInCart) => prod.id === idItem
     );
-    setFinalQuantity(finalQuantity - prodEliminar.cantidad);
-    setProductsCart(productsCart.filter((prod) => prod.id !== idItem));
-    setTotalCost(totalCost - prodEliminar.total);
+    if(prodEliminar == undefined){
+      alert('el producto no se pudo eliminar')
+    }else{
+      setFinalQuantity(finalQuantity - prodEliminar.cantidad);
+      setProductsCart(productsCart.filter((prod) => prod.id !== idItem));
+      setTotalCost(totalCost - prodEliminar.total);
+    }
+
   }
 
   //funcion de vaciar el arreglo del carrito de los productos
@@ -89,7 +94,7 @@ function ContextProductsCart({ children } : Props) {
   }
 
   //funcion de ver si un producto ya esta en el carrito o no, id, retorne true false
-  function isInCart(idItem: any): boolean {
+  function isInCart(idItem: string): boolean {
     return productsCart.find((prod: ItemInCart) => prod.id === idItem)
       ? true
       : false;

@@ -4,7 +4,7 @@ import React from "react";
 import { Order } from "../../types";
 
 
-
+//This is the product that is in the orders view page container, each of the orders
 function OrderItem({order}:{order:Order}) {
   return (
     <div className="flex flex-row items-center border-b-2 border-b-gray-100 py-3">

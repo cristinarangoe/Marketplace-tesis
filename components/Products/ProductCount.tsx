@@ -1,6 +1,7 @@
 import React from "react";
+import { Item } from "../../types";
 
-const ProductCount = ({product, onPressAdd, onPressSubs, cantidad} : any) => {
+const ProductCount = ({product, onPressAdd, onPressSubs, cantidad} : {product : Item, onPressAdd: (() => void), onPressSubs: (() => void), cantidad: number}) => {
   return (
     <div>
       <div className="flex items-center ">
