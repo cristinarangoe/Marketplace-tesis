@@ -7,7 +7,6 @@ import Navbar from '../components/Navbar-Navigation/Navbar';
 import CartItem from '../components/Cart/CartItem';
 
 const Home: NextPage = () => {
-
 	return (
 		<div>
 			<Navbar />
