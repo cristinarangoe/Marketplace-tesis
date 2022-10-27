@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import * as Tabs from '@radix-ui/react-tabs';
 
-
-const TabsSignLogIn = ({login , signin } : {login: JSX.Element, signin: JSX.Element}) => {
+const TabsSignLogIn = ({
+	login,
+	signin,
+}: {
+	login: JSX.Element;
+	signin: JSX.Element;
+}) => {
+	const [active, setActive] = useState({ tab1: true, tab2: false });
 	const changeTabState = (tab: 'tab1' | 'tab2'): void => {
 		if (!active[tab]) {
 			const otherTab: any = Object.keys(active).find((key) => key !== tab);
