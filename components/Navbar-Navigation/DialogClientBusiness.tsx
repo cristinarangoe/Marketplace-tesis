@@ -51,6 +51,7 @@ const DialogClientBusiness = () => {
       </Dialog.Portal>
     </Dialog.Root>
   );
+
 };
 
 export default DialogClientBusiness;
