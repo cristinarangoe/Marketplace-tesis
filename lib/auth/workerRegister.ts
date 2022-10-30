@@ -16,7 +16,7 @@ export async function registerClient(client: ClientSchema) {
 }
 
 export async function registerEntrepreneur(entrepreneur: EntrepreneurSchema) {
-	return await fetch(`${REGISTER_URL}/entrepreneur/register`, {
+	return await fetch(`${REGISTER_URL}/business/register`, {
 		method: 'Post',
 		body: JSON.stringify(entrepreneur),
 	});
