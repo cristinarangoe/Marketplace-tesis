@@ -23,13 +23,9 @@ const NoVariantsSection = ({ register }: SectionsProps) => {
 	const imageRef = useRef(null);
 	const onImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files && imageRef.current) {
-			const imagebuffer = e.target.files[0]
-				.arrayBuffer()
-				.then((data) => {
-					const imageUrl = new Blob([data], { type: 'application/text' });
-					const nose = (imageRef.current!.src = URL.createObjectURL(imageUrl));
-				})
-				.catch((e) => console.log(e));
+			if (e.target.files[0]) {
+				imageRef.current!.src = URL.createObjectURL(e.target.files[0]);
+			}
 		}
 	};
 
@@ -58,6 +54,32 @@ const NoVariantsSection = ({ register }: SectionsProps) => {
 				inputProps={register('precio', { required: true })}
 			/>
 			<button type="submit">Continuar</button>
+		</section>
+	);
+};
+
+const VariantsSection = () => {
+	return (
+		<section className="flex flex-col w-1/2 mx-auto px-5 py-6 mt-8 rounded-md gap-4 bg-purple-200 border-purple-400 border-2 ">
+			<h4>Variantes</h4>
+			<hr className=" border-black" />
+			<div className="">
+				<p>opcion 1</p>
+				<div className="flex flex-row gap-5 border-b border-black pb-5 mt-4">
+					<select name="tipo_variante">
+						<option value="tamaño">tamaño</option>
+						<option value="color">color</option>
+					</select>
+					<input
+						type="text"
+						className="mr-8 p-1 mt-2 rounded-md w-full"
+						placeholder="separar cada opcion por una coma"
+					/>
+				</div>
+			</div>
+			<button className="self-start" type="button">
+				agregar opcion
+			</button>
 		</section>
 	);
 };
@@ -123,9 +145,7 @@ const FormAddProduct = () => {
 					</section>
 				</section>
 				{hasVariants == true ? (
-					<section className="flex flex-col w-1/2 mx-auto px-5 py-6 mt-8 rounded-md gap-4 bg-purple-200 border-purple-400 border-2 ">
-						<h4>add variants</h4>
-					</section>
+					<VariantsSection />
 				) : hasVariants == false ? (
 					<NoVariantsSection register={register} />
 				) : null}
