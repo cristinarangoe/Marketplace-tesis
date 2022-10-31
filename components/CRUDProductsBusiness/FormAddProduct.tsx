@@ -1,11 +1,65 @@
-import React, { useState } from 'react';
-import { useForm, UseFormRegister } from 'react-hook-form';
+import Image, { StaticImageData } from 'next/image';
+import React, { LegacyRef, useRef, useState } from 'react';
+import {
+	useForm,
+	UseFormRegister,
+	UseFormRegisterReturn,
+} from 'react-hook-form';
 import { GenericInput } from '../genericInput';
 
 type FormData = {
 	name: string;
 	description: string;
 	radio: string;
+	image: FileList;
+	precio: number;
+};
+
+interface SectionsProps {
+	register: UseFormRegister<FormData>;
+}
+
+const NoVariantsSection = ({ register }: SectionsProps) => {
+	const imageRef = useRef(null);
+	const onImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files && imageRef.current) {
+			const imagebuffer = e.target.files[0]
+				.arrayBuffer()
+				.then((data) => {
+					const imageUrl = new Blob([data], { type: 'application/text' });
+					const nose = (imageRef.current!.src = URL.createObjectURL(imageUrl));
+				})
+				.catch((e) => console.log(e));
+		}
+	};
+
+	return (
+		<section className="flex flex-col w-1/2 mx-auto px-5 py-6 mt-8 rounded-md gap-4 bg-purple-200 border-purple-400 border-2 ">
+			<label>Media:</label>
+			<div className="w-full border-2 border-purple-500 rounded-md h-40 flex justify-center items-center border-dotted">
+				<figure>
+					<img width="50" height="50" alt="image" ref={imageRef} />
+				</figure>
+				<input
+					{...register('image', { required: true })}
+					className="block text-sm text-slate-500
+          file:mr-4 file:py-2 file:px-4
+          file:rounded-md file:border-0
+          file:text-sm file:font-semibold
+          file:bg-violet-50 file:text-violet-700
+          hover:file:bg-violet-100"
+					type="file"
+					accept="image/*"
+					onChange={onImageUpload}
+				/>
+			</div>
+			<GenericInput
+				label="Precio:"
+				inputProps={register('precio', { required: true })}
+			/>
+			<button type="submit">Continuar</button>
+		</section>
+	);
 };
 
 const FormAddProduct = () => {
@@ -18,7 +72,9 @@ const FormAddProduct = () => {
 	} = useForm<FormData>();
 	const onSubmit = handleSubmit((data) => console.log(data));
 
-	const radioRegister = register('radio', { required: true });
+	const radioRegister = register('radio', {
+		required: true,
+	});
 
 	const onchangeHasVariants = (v: React.ChangeEvent<HTMLInputElement>) => {
 		if (v.target.value === 'true') setHasVariants(true);
@@ -71,9 +127,7 @@ const FormAddProduct = () => {
 						<h4>add variants</h4>
 					</section>
 				) : hasVariants == false ? (
-					<section className="flex flex-col w-1/2 mx-auto px-5 py-6 mt-8 rounded-md gap-4 bg-purple-200 border-purple-400 border-2 ">
-						<h4>no variants</h4>
-					</section>
+					<NoVariantsSection register={register} />
 				) : null}
 
 				<button
