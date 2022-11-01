@@ -1,6 +1,8 @@
 import Image, { StaticImageData } from 'next/image';
 import React, { LegacyRef, useRef, useState } from 'react';
 import {
+	Control,
+	useFieldArray,
 	useForm,
 	UseFormRegister,
 	UseFormRegisterReturn,
@@ -10,13 +12,18 @@ import { GenericInput } from '../genericInput';
 type FormData = {
 	name: string;
 	description: string;
-	radio: string;
-	image: FileList;
-	precio: number;
+	hasVariants: string;
+	variants: {
+		type: string;
+		options: string;
+	}[];
+	image?: FileList;
+	precio?: number;
 };
 
 interface SectionsProps {
 	register: UseFormRegister<FormData>;
+	control?: Control<FormData, any>;
 }
 
 const NoVariantsSection = ({ register }: SectionsProps) => {
@@ -58,26 +65,67 @@ const NoVariantsSection = ({ register }: SectionsProps) => {
 	);
 };
 
-const VariantsSection = () => {
+const VariantsSection = ({ control, register }: SectionsProps) => {
+	const { fields, append, remove } = useFieldArray({
+		name: 'variants',
+		control,
+	});
 	return (
 		<section className="flex flex-col w-1/2 mx-auto px-5 py-6 mt-8 rounded-md gap-4 bg-purple-200 border-purple-400 border-2 ">
 			<h4>Variantes</h4>
 			<hr className=" border-black" />
-			<div className="">
-				<p>opcion 1</p>
-				<div className="flex flex-row gap-5 border-b border-black pb-5 mt-4">
-					<select name="tipo_variante">
-						<option value="tamaño">tamaño</option>
-						<option value="color">color</option>
-					</select>
-					<input
-						type="text"
-						className="mr-8 p-1 mt-2 rounded-md w-full"
-						placeholder="separar cada opcion por una coma"
-					/>
-				</div>
-			</div>
-			<button className="self-start" type="button">
+			{fields.map((field, key) => {
+				return (
+					<div className="" key={key}>
+						<div className="flex flex-row justify-between pr-6">
+							<p>opcion {key + 1}</p>
+							<button
+								onClick={() => remove(key)}
+								className="inline-block w-[24px] h-[24px] bg-red-400 rounded-full text-white"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									className="w-[24px] h-[20px] text-red-700"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M6 18L18 6M6 6l12 12"
+									/>
+								</svg>
+							</button>
+						</div>
+
+						<div className="flex flex-row gap-5 border-b border-black pb-5 mt-4">
+							<select {...register(`variants.${key}.type`, { required: true })}>
+								<option value="tamaño">tamaño</option>
+								<option value="color">color</option>
+							</select>
+							<input
+								type="text"
+								{...register(`variants.${key}.options`, { required: true })}
+								className="mr-8 p-1 mt-2 rounded-md w-full"
+								placeholder="separar cada opcion por una coma"
+							/>
+						</div>
+					</div>
+				);
+			})}
+
+			<button
+				className="self-start"
+				type="button"
+				onClick={() =>
+					append({
+						type: 'tamaño',
+						options: '',
+					})
+				}
+			>
 				agregar opcion
 			</button>
 		</section>
@@ -88,13 +136,23 @@ const FormAddProduct = () => {
 	const [hasVariants, setHasVariants] = useState<boolean | null>(null);
 	const {
 		register,
+		control,
 		setValue,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<FormData>();
+	} = useForm<FormData>({
+		defaultValues: {
+			variants: [
+				{
+					type: 'tamaño',
+					options: '',
+				},
+			],
+		},
+	});
 	const onSubmit = handleSubmit((data) => console.log(data));
 
-	const radioRegister = register('radio', {
+	const radioRegister = register('hasVariants', {
 		required: true,
 	});
 
@@ -145,7 +203,7 @@ const FormAddProduct = () => {
 					</section>
 				</section>
 				{hasVariants == true ? (
-					<VariantsSection />
+					<VariantsSection register={register} control={control} />
 				) : hasVariants == false ? (
 					<NoVariantsSection register={register} />
 				) : null}
