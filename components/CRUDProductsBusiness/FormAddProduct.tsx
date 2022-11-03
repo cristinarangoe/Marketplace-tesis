@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from 'next/image';
-import React, { LegacyRef, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
 	Control,
 	useFieldArray,
@@ -7,13 +7,14 @@ import {
 	UseFormRegister,
 	UseFormRegisterReturn,
 } from 'react-hook-form';
+import { generateVariants } from '../../lib/products';
 import { GenericInput } from '../genericInput';
 
 type FormData = {
 	name: string;
 	description: string;
 	hasVariants: string;
-	variants: {
+	variantsFields: {
 		type: string;
 		options: string;
 	}[];
@@ -31,7 +32,9 @@ const NoVariantsSection = ({ register }: SectionsProps) => {
 	const onImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files && imageRef.current) {
 			if (e.target.files[0]) {
-				imageRef.current!.src = URL.createObjectURL(e.target.files[0]);
+				(imageRef.current! as { src: string }).src = URL.createObjectURL(
+					e.target.files[0]
+				);
 			}
 		}
 	};
@@ -67,9 +70,10 @@ const NoVariantsSection = ({ register }: SectionsProps) => {
 
 const VariantsSection = ({ control, register }: SectionsProps) => {
 	const { fields, append, remove } = useFieldArray({
-		name: 'variants',
+		name: 'variantsFields',
 		control,
 	});
+
 	return (
 		<section className="flex flex-col w-1/2 mx-auto px-5 py-6 mt-8 rounded-md gap-4 bg-purple-200 border-purple-400 border-2 ">
 			<h4>Variantes</h4>
@@ -101,13 +105,17 @@ const VariantsSection = ({ control, register }: SectionsProps) => {
 						</div>
 
 						<div className="flex flex-row gap-5 border-b border-black pb-5 mt-4">
-							<select {...register(`variants.${key}.type`, { required: true })}>
+							<select
+								{...register(`variantsFields.${key}.type`, { required: true })}
+							>
 								<option value="tamaño">tamaño</option>
 								<option value="color">color</option>
 							</select>
 							<input
 								type="text"
-								{...register(`variants.${key}.options`, { required: true })}
+								{...register(`variantsFields.${key}.options`, {
+									required: true,
+								})}
 								className="mr-8 p-1 mt-2 rounded-md w-full"
 								placeholder="separar cada opcion por una coma"
 							/>
@@ -142,7 +150,7 @@ const FormAddProduct = () => {
 		formState: { errors },
 	} = useForm<FormData>({
 		defaultValues: {
-			variants: [
+			variantsFields: [
 				{
 					type: 'tamaño',
 					options: '',
@@ -150,7 +158,6 @@ const FormAddProduct = () => {
 			],
 		},
 	});
-	const onSubmit = handleSubmit((data) => console.log(data));
 
 	const radioRegister = register('hasVariants', {
 		required: true,
@@ -160,6 +167,12 @@ const FormAddProduct = () => {
 		if (v.target.value === 'true') setHasVariants(true);
 		if (v.target.value === 'false') setHasVariants(false);
 	};
+
+	const onSubmit = handleSubmit((data) => {
+		if (data.hasVariants === 'true') {
+			generateVariants(data);
+		}
+	});
 
 	return (
 		<div className="flex flex-col items-center">
@@ -207,13 +220,21 @@ const FormAddProduct = () => {
 				) : hasVariants == false ? (
 					<NoVariantsSection register={register} />
 				) : null}
-
-				<button
-					className=" mt-5 mx-auto py-1 px-3 rounded-md bg-purple-700 text-white"
-					type="submit"
-				>
-					Continuar
-				</button>
+				{hasVariants == true ? (
+					<button
+						className=" mt-5 mx-auto py-1 px-3 rounded-md bg-purple-700 text-white"
+						type="submit"
+					>
+						Generar variantes
+					</button>
+				) : hasVariants == false ? (
+					<button
+						className=" mt-5 mx-auto py-1 px-3 rounded-md bg-purple-700 text-white"
+						type="submit"
+					>
+						Guardar producto
+					</button>
+				) : null}
 			</form>
 		</div>
 	);
