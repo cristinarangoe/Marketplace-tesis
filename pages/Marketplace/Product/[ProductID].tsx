@@ -1,27 +1,16 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
-import AddProductCartButton from "../../components/Cart/AddProductCartButton";
-import Navbar from "../../components/Navbar-Navigation/Navbar";
-import ProductToCart from "../../components/Products/ProductToCart";
-import { Item } from "../../types";
+import AddProductCartButton from "../../../components/Cart/AddProductCartButton";
+import Navbar from "../../../components/Navbar-Navigation/Navbar";
+import ProductToCart from "../../../components/Products/ProductToCart";
+import { Item } from "../../../types";
 
 function ProductDetail() {
-
   const router = useRouter();
-  const {product} = router.query;
+  const productId = router.query.ProductID;
 
-  console.log(product)
-
-  let producto: Item = {
-    id: "001",
-    nombre: "Plato mexicano",
-    precio: 12000,
-    descripcion: "plato con deliciosos ingredientes",
-    imagen: "/Logo.png",
-    categoria: "Mexicano",
-    stock: 100,
-  };
+  console.log(productId);
 
   let products: Item[] = [
     {
@@ -29,7 +18,7 @@ function ProductDetail() {
       nombre: "Plato mexicano",
       precio: 12000,
       descripcion: "plato con deliciosos ingredientes",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Mexicano",
       stock: 5,
     },
@@ -38,7 +27,7 @@ function ProductDetail() {
       nombre: "Nachos",
       precio: 10000,
       descripcion: "plato con deliciosos ingredientes",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Mexicano",
       stock: 5,
     },
@@ -47,7 +36,7 @@ function ProductDetail() {
       nombre: "Arepa blanca pequeña",
       precio: 15000,
       descripcion: "arepa hecha con maiz 100% colombiano",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Arepas",
       stock: 5,
     },
@@ -56,7 +45,7 @@ function ProductDetail() {
       nombre: "Arepa blanca grande",
       precio: 8000,
       descripcion: "arepa version grande blanca",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Arepas",
       stock: 5,
     },
@@ -65,7 +54,7 @@ function ProductDetail() {
       nombre: "Arepa de queso",
       precio: 11000,
       descripcion: "Queso mozzarella 100% natural",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Arepas",
       stock: 5,
     },
@@ -74,7 +63,7 @@ function ProductDetail() {
       nombre: "Chorizo de cerdo",
       precio: 20000,
       descripcion: "Hecho con ingredientes de la mejor calidad",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Cárnicos",
       stock: 5,
     },
@@ -83,7 +72,7 @@ function ProductDetail() {
       nombre: "Carne de hamburguesa",
       precio: 22000,
       descripcion: "Carne de res",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Cárnicos",
       stock: 5,
     },
@@ -92,7 +81,7 @@ function ProductDetail() {
       nombre: "Guacamole",
       precio: 15000,
       descripcion: "Hecho sin conservantes",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Mexicano",
       stock: 5,
     },
@@ -101,40 +90,40 @@ function ProductDetail() {
       nombre: "Salsa de pimentón",
       precio: 15000,
       descripcion: "Pimenton",
-      imagen: "/public/Logo.png",
+      imagen: "/Logo.png",
       categoria: "Mexicano",
       stock: 5,
     },
   ];
 
-  // let filterProduct : Item | undefined = products.filter((prod) => prod.id !== product.id)
-
-  // productsCart.filter((prod) => prod.id !== idItem)
-
+  let producto: Item | undefined = products.find(
+    (prod) => prod.id === productId
+  );
+  if (producto === undefined) {
+    return <h2>Producto no encontrado</h2>;
+  }
   return (
     <div>
       <Navbar />
-      <div key={producto.id} className="flex flex-row mx-10 mt-5">
+      <div key={producto.id} className="flex flex-row mx-16 mt-8">
         <div className="basis-1/2 grid justify-items-center ">
-          <Image
-            className="max-h-96"
+          <img
+            className="w-3/4"
             src={producto.imagen}
             alt={producto.nombre}
+            height={100}
+            width={100}
           />
         </div>
         <div className="basis-1/2 mx-10">
-          <h1 className="text-5xl text-center text-hidia-yellow">
+          <h1 className="text-4xl font-bold text-tiffany-green">
             {producto.nombre}
           </h1>
-          <p className="text-xl my-4">{producto.descripcion}</p>
-          <div className="flex flex-row justify-center items-center">
-            <p className="text-xl mr-16 ">${producto.precio}</p>
-            {/* <ItemBuy initial={1} producto={producto} /> */}
-          </div>
+          <p className="text-2xl my-4 font-normal">{producto.descripcion}</p>
+          <p className="text-2xl font-semibold ">${producto.precio}</p>
+          <ProductToCart producto={producto} initial={1} />
         </div>
-        <ProductToCart producto={producto} initial={1}/>
       </div>
-      
     </div>
   );
 }

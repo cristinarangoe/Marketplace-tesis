@@ -16,15 +16,18 @@ function CategorieItem({ cat }: any) {
 
     <div className="inline-block w-60 p-4 m-4  shadow-md rounded-lg ease-in-out duration-300">
       <div className="flex flex-col">
-        <Link href="/Marketplace/ProductDetail">
-          <Image
-            className="px-2"
-            src={cat.image}
-            alt={cat.name}
-            width="100"
-            height="100"
-          />
-        </Link>
+        <div>
+          <Link href="/Marketplace/ProductDetail">
+            <Image
+              className="px-2"
+              src={cat.image}
+              alt={cat.name}
+              width="100"
+              height="100"
+            />
+          </Link>
+        </div>
+
         <h3 className="text-2xl my-4">
           <Link href="/Marketplace/ProductDetail">{cat.name}</Link>
         </h3>

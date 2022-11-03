@@ -1,7 +1,10 @@
 import Link from "next/link";
 import React from "react";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 function VerticalNavbarBusiness() {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <div className=" bg-blue-500 h-screen w-72 flex flex-col px-5 pt-5 ">
       <Link href="/">

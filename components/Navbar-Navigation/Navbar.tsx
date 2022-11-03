@@ -1,44 +1,45 @@
 import Link from "next/link";
 import React from "react";
-import Image from 'next/image'
+import Image from "next/image";
 import DialogClientBusiness from "./DialogClientBusiness";
-import { useGlobalContext } from '../../Context/Index'
+import { useGlobalContext } from "../../Context/Index";
+import CategoriesNavigationMenu from "./CategoriesNavigationMenu";
 
 const Navbar = () => {
-
-  const {finalQuantityProp} = useGlobalContext();
+  const { finalQuantityProp } = useGlobalContext();
 
   return (
-    <div className="">
-      <div className="flex flex-row w-full py-3 bg-cyan-300">
+    <div className="z-10">
+      <div className="flex flex-row w-full py-5 border-b-2 border-b-gray-200 h-fit items-center">
         <div className="ml-5">
-          <Link href='/Marketplace/Home'><Image src="/Logo.png" alt="logo" width={40} height={16} /></Link>
-        
+          <Link href="/Marketplace/Home">
+            <Image src="/Logo.png" alt="logo" width={40} height={16} />
+          </Link>
         </div>
         <div className="flex flex-row ml-5">
           <ul className="flex flex-row ">
-            <li  className="mr-5 text-black text-xl font-medium hover:text-yellow-500">
-              <Link href="/Marketplace/ProductsContainer" >Productos</Link>
+            <li className="mr-5 text-black text-2xl font-medium  no-underline hover:underline  hover:decoration-cyan-300 ">
+              <Link href="/Marketplace/ProductsContainer">Productos</Link>
             </li>
-            <li className="mr-5 text-black text-xl font-medium hover:text-yellow-500">
-              <Link href="/">Opcion 2</Link>
+            <li className="mr-5 text-black text-2xl font-medium hover:urderline hover:uderline-offset-2 hover:decoration-medium-violet hover:decoration-2 z-40">
+              <CategoriesNavigationMenu />
             </li>
-            <li className="mr-5 text-black text-xl font-medium hover:text-yellow-500">
-              <Link href="/">Opcion 3</Link>
+            <li className="mr-5 text-black text-2xl font-medium hover:urderline  hover:decoration-medium-violet ">
+              <Link href="/Marketplace/BusinessesPage">Emprendimientos</Link>
             </li>
           </ul>
         </div>
         <div className="flex flex-row absolute right-0 mr-5">
           <ul className="flex flex-row ">
             <li className="mr-5 my-auto">
-              <Link href="/">
+              <Link href="/Marketplace/UserProfile">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-8 h-8"
                 >
                   <path
                     strokeLinecap="round"
@@ -49,9 +50,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="mr-5">
-                <DialogClientBusiness/>
+              <DialogClientBusiness />
             </li>
-            <li className="flex">
+            <li className="flex relative">
               <Link href="/Marketplace/Cart">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +60,7 @@ const Navbar = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-10 h-10"
                 >
                   <path
                     strokeLinecap="round"
@@ -68,7 +69,9 @@ const Navbar = () => {
                   />
                 </svg>
               </Link>
-              ({finalQuantityProp})
+              <div className="bg-tiffany-green absolute top-0 right-0 rounded-full px-1">
+                <p className="text-md ">{finalQuantityProp}</p>
+              </div>
             </li>
           </ul>
         </div>

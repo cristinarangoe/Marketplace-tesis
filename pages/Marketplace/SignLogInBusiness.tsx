@@ -2,7 +2,7 @@ import React from "react";
 import FormLogIn from "../../components/SignLogIn/FormLogIn";
 import FormSignInBusiness from "../../components/SignLogIn/FormSignInBusiness";
 import Navbar from "../../components/Navbar-Navigation/Navbar";
-import TabsSignLogIn from "../../components/SignLogIn/TabsSignLogIn";
+import TabsSignLogIn from "../../components/SignLogIn/TabsSignIn";
 import GoBack from "../../components/Navbar-Navigation/GoBack";
 
 const SignLogInBusiness = () => {

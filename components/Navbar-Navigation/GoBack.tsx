@@ -8,7 +8,7 @@ interface GoBackProps {
 
 const GoBack: React.FC<GoBackProps> = ({ link, children }) => {
   return (
-    <div className="">
+    <div className="pt-5 ml-5">
       <Link href={link}>
         <div className="flex">
           <svg

@@ -2,14 +2,22 @@ import React from "react";
 import NavbarBusiness from "../../components/Navbar-Navigation/NavbarBusiness";
 import VerticalNavbarBusiness from "../../components/Navbar-Navigation/VerticalNavbarBusiness";
 import OrderItem from "../../components/OrdersBusiness/OrderItem";
-import { Client, Order, ProductInOrder } from "../../types";
+import { address, Client, Order, ProductInOrder } from "../../types";
 
 function OrdersViewPage() {
+  let shippingAdress: address = {
+    state: "Antioquia",
+    city: "Medellín",
+    street: "Calle 7 sur #23-03",
+    floor: "apto 1304",
+    neighbourhood: "El poblado",
+    nameRecipient: "Cristina Arango Escobar",
+  };
   let client : Client = {
     name: 'cristina arango escobar',
     phone: '3217397457',
     email: 'cristinarangoe@hotmail.com',
-    shippingAdress: 'calle 7 sur #23-03',
+    shippingAdress,
     id: '1017273163'
   }
 
