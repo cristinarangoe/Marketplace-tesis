@@ -28,13 +28,19 @@ export interface Order {
 	shipping: number;
 	client: Client;
 	products?: ProductInOrder[];
+	business?: businessInOrder;
+}
+
+export interface businessInOrder {
+	id: string,
+	name: string,
 }
 
 export interface Client {
 	name: string;
 	phone: string;
 	email: string;
-	shippingAdress: string;
+	shippingAdress: address;
 	id: string;
 }
 
@@ -72,4 +78,13 @@ export interface EntrepreneurSchema {
 	businessName: string;
 	password: string;
 	confirmPassword: string;
+}
+
+export interface address {
+	state: string;
+	city: string;
+	street: string;
+	floor: string;
+	neighbourhood: string;
+	nameRecipient: string;
 }

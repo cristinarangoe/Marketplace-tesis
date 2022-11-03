@@ -2,17 +2,25 @@ import React from "react";
 import GoBack from "../../components/Navbar-Navigation/GoBack";
 import NavbarBusiness from "../../components/Navbar-Navigation/NavbarBusiness";
 import VerticalNavbarBusiness from "../../components/Navbar-Navigation/VerticalNavbarBusiness";
-import { Client, Order, ProductInOrder } from "../../types";
+import { address, Client, Order, ProductInOrder } from "../../types";
 import * as Select from "@radix-ui/react-select";
 import ProductInOrderItem from "../../components/OrdersBusiness/ProductInOrderItem";
 import OrderItem from "../../components/OrdersBusiness/OrderItem";
 
 function SpecificOrderContainer() {
+  let shippingAdress: address = {
+    state: "Antioquia",
+    city: "Medellín",
+    street: "Calle 7 sur #23-03",
+    floor: "apto 1304",
+    neighbourhood: "El poblado",
+    nameRecipient: "Cristina Arango Escobar",
+  };
   let client: Client = {
     name: "cristina arango escobar",
     phone: "3217397457",
     email: "cristinarangoe@hotmail.com",
-    shippingAdress: "calle 7 sur #23-03",
+    shippingAdress,
     id: "1017273163",
   };
   let productsInOrder: ProductInOrder[] = [
@@ -47,9 +55,6 @@ function SpecificOrderContainer() {
     client,
     products: productsInOrder
   };
-
-
-
   return (
     <div>
       <NavbarBusiness />
@@ -252,7 +257,7 @@ function SpecificOrderContainer() {
               </div>
               <div className="pt-3">
                 <h2 className="text-xl">Información de envío</h2>
-                <h3 className="pt-2">{order.client.shippingAdress}</h3>
+                {/* <h3 className="pt-2">{order.client.shippingAdress}</h3> */}
               </div>
             </div>
           </div>
