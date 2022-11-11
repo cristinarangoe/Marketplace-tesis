@@ -66,5 +66,5 @@ export function optionsCombination(
 }
 
 export function parseOptions(options: string): string[] {
-	return options.trim().split(',');
+	return options.replaceAll(' ', '').split(',');
 }
