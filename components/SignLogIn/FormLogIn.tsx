@@ -26,29 +26,29 @@ const FormLogIn = () => {
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className="flex flex-col justify-center mx-auto bg-red-300 px-5"
+			className="flex flex-col justify-center mx-auto px-10"
 		>
 			<div className="flex flex-col mt-3">
-				<label className="">Correo electrónico</label>
+				<label className="pb-1">Correo electrónico</label>
 				<input
 					type="email"
 					{...register('email', { required: true })}
-					className=" p-1 rounded-md"
+					className=" p-1 rounded-md border-2 border-gray-200 shadow-sm"
 				/>
 			</div>
-			<div className="flex flex-col ">
-				<label className="">Contraseña</label>
+			<div className="flex flex-col pt-5">
+				<label className="pb-1">Contraseña</label>
 				<input
 					type="password"
 					{...register('password', { required: true })}
-					className=" p-1 rounded-md"
+					className=" p-1 rounded-md border-2 border-gray-200 shadow-sm"
 				/>
 			</div>
 
 			<input
 				type="submit"
 				value="Iniciar sesión"
-				className=" mt-5 mx-auto py-2 px-3 rounded-md bg-green-600"
+				className=" mt-5 py-2 px-3 rounded-md bg-medium-violet text-white font-medium text-lg"
 			/>
 		</form>
 	);

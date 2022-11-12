@@ -89,9 +89,9 @@ const ProductsContainer = () => {
   ];
 
   return (
-    <div>
+    <div className=" min-h-screen">
         <Navbar/>
-      <div className="grid  justify-items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-10">
+      <div className="grid justify-items-center grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 mx-10">
         {products.map((prod, index) => (
           <Product product={prod} key={index} />
         ))}
