@@ -1,17 +1,17 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
-import Link from 'next/link';
+import CategoriesCarousel from '../components/HomeElementsMarketplace/CategoriesCarousel';
+import PrincipalCarousel from '../components/HomeElementsMarketplace/PrincipalCarousel';
 import Navbar from '../components/Navbar-Navigation/Navbar';
-import CartItem from '../components/Cart/CartItem';
 
-const Home: NextPage = () => {
+function Home() {
 	return (
-		<div>
+		<div className="">
 			<Navbar />
+			<div className="mx-5 mt-5">
+				<PrincipalCarousel />
+				<CategoriesCarousel />
+			</div>
 		</div>
 	);
-};
+}
 
 export default Home;
