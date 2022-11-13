@@ -1,17 +1,24 @@
 import '../styles/globals.css';
+import type { ReactElement, ReactNode } from 'react';
+import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import ContextProductsCart from '../Context/ContextProductsCart';
 
-function MyApp({ Component, pageProps }: AppProps) {
-	return (
-		<>
-			<ContextProductsCart>
-				<Component {...pageProps} />
-			</ContextProductsCart>
-		</>
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+	getLayout?: (page: ReactElement) => ReactNode;
+};
 
-		// <Component {...pageProps} />
+type AppPropsWithLayout = AppProps & {
+	Component: NextPageWithLayout;
+};
+
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+	// Use the layout defined at the page level, if available
+	const getLayout = Component.getLayout ?? ((page) => page);
+
+	return getLayout(
+		<ContextProductsCart>
+			<Component {...pageProps} />
+		</ContextProductsCart>
 	);
 }
-
-export default MyApp;

@@ -8,7 +8,7 @@ import TabsSignIn from '../components/SignLogIn/TabsSignIn';
 function Register() {
 	return (
 		<div className="bg-tiffany-green/5 min-h-screen">
-			<GoBack link="/">Inicio</GoBack>
+			<GoBack link="/" text="Inicio" />
 			<div className="flex flex-col justify-center w-2/5 mx-auto mt-3 md:my-8 rounded-xl border border-gray-200 bg-white shadow-lg  pb-3">
 				<div className="text-center pt-8 pb-6 px-5">
 					<h2 className="font-bold text-3xl">Registro</h2>

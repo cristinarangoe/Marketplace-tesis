@@ -1,8 +1,11 @@
+import { ReactElement } from 'react';
 import CategoriesCarousel from '../components/HomeElementsMarketplace/CategoriesCarousel';
 import PrincipalCarousel from '../components/HomeElementsMarketplace/PrincipalCarousel';
 import Navbar from '../components/Navbar-Navigation/Navbar';
+import BusinessLayout from '../layouts/BusinessLayout';
+import { NextPageWithLayout } from './_app';
 
-function Home() {
+const Home: NextPageWithLayout = () => {
 	return (
 		<div className="">
 			<Navbar />
@@ -12,6 +15,6 @@ function Home() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Home;

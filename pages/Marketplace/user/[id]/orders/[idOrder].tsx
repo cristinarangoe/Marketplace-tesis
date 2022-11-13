@@ -16,8 +16,6 @@ function SpecificOrderUser() {
 	const router = useRouter();
 	const { idOrder } = router.query;
 
-	console.log(idOrder);
-
 	let shippingAdress: address = {
 		state: 'Antioquia',
 		city: 'Medellín',
