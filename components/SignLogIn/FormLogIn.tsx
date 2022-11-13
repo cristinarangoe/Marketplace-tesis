@@ -32,7 +32,7 @@ const FormLogIn = () => {
 			saveSession(userSession);
 			console.log(user);
 			if (user.user.user_metadata.userType == 'business') {
-				router.push('/business');
+				router.push('/business/test');
 			}
 			if (user.user.user_metadata.userType == 'client') {
 				router.push('/');
