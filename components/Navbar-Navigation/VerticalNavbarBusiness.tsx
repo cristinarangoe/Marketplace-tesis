@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
+import { useUserContext } from '../../Context/Index';
 
 function VerticalNavbarBusiness() {
 	const [open, setOpen] = React.useState(false);
+	const { logout } = useUserContext();
 
 	return (
 		<div className=" bg-blue-500 h-screen w-72 flex flex-col px-5 pt-5 ">
-			<Link href="/business/">
+			<Link href="/business/test">
 				<div className="flex flex-row">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +28,7 @@ function VerticalNavbarBusiness() {
 					<h3 className="pl-3">Home</h3>
 				</div>
 			</Link>
-			<Link href="/business/OrdersViewPage">
+			<Link href="/business/test/orders">
 				<div className="flex flex-row mt-2">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +47,7 @@ function VerticalNavbarBusiness() {
 					<h3 className="pl-3">Ordenes</h3>
 				</div>
 			</Link>
-			<Link href="/business/CRUDProductBusiness">
+			<Link href="/business/test/products">
 				<div className="flex flex-row mt-2">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +71,7 @@ function VerticalNavbarBusiness() {
 					<h3 className="pl-3">Productos</h3>
 				</div>
 			</Link>
-			<Link href="/business/">
+			<Link href="/business/test">
 				<div className="flex flex-row mt-2">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +108,9 @@ function VerticalNavbarBusiness() {
 						/>
 					</svg>
 
-					<h3 className="pl-3">Salir</h3>
+					<h3 className="pl-3" onClick={logout}>
+						Salir
+					</h3>
 				</div>
 			</Link>
 		</div>

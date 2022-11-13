@@ -1,7 +1,7 @@
 import React from 'react';
-import FormEditProduct from '../../components/CRUDProductsBusiness/FormEditProduct';
-import GoBack from '../../components/Navbar-Navigation/GoBack';
-import { Item } from '../../types';
+import FormEditProduct from '../../../../../components/CRUDProductsBusiness/FormEditProduct';
+import GoBack from '../../../../../components/Navbar-Navigation/GoBack';
+import { Item } from '../../../../../types';
 
 function EditProductContainer() {
 	let producto: Item = {
@@ -15,7 +15,7 @@ function EditProductContainer() {
 	};
 	return (
 		<div>
-			<GoBack link="/BusinessPage/CRUDProductBusiness" text="Atras" />
+			<GoBack link="/business/CRUDProductBusiness" text="Atras" />
 			<FormEditProduct product={producto} />
 		</div>
 	);

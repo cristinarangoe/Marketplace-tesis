@@ -1,5 +1,11 @@
 import { useRouter } from 'next/router';
-import React, { Dispatch, ReactElement, SetStateAction, useState } from 'react';
+import React, {
+	Dispatch,
+	ReactElement,
+	SetStateAction,
+	useEffect,
+	useState,
+} from 'react';
 import { SupabaseAuthUser } from '../types/user';
 
 interface ContextProps {
@@ -17,7 +23,7 @@ export const UserContext = React.createContext<ContextProps>({
 });
 
 export default function ContextUser({ children }: { children: ReactElement }) {
-	const [user, setUser] = useState<SupabaseAuthUser>();
+	const [user, setUser] = useState<SupabaseAuthUser | undefined>();
 	const [isAuthenticated, setAuthenticatedStatus] = useState<
 		boolean | undefined
 	>();
@@ -25,7 +31,7 @@ export default function ContextUser({ children }: { children: ReactElement }) {
 
 	//function to logoutUser
 	function logout() {
-		setUser(() => undefined);
+		setUser(undefined);
 		setAuthenticatedStatus(false);
 		router.push('/');
 	}

@@ -8,16 +8,16 @@ interface LayoutProps {
 
 export default function BusinessLayout({ children }: LayoutProps) {
 	return (
-		<AuthGuardBusiness>
-			<div>
-				<NavbarBusiness />
-				<div className="flex">
-					<VerticalNavbarBusiness />
-					<div className="mx-8 mt-5 w-full">
-						<div className="mb-2">{children}</div>
-					</div>
+		// <AuthGuardBusiness>
+		<div>
+			<NavbarBusiness />
+			<div className="flex">
+				<VerticalNavbarBusiness />
+				<div className="mx-8 mt-5 w-full">
+					<div className="mb-2">{children}</div>
 				</div>
 			</div>
-		</AuthGuardBusiness>
+		</div>
+		// </AuthGuardBusiness>
 	);
 }

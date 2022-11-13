@@ -1,11 +1,8 @@
-import React from 'react';
-import GoBack from '../../components/Navbar-Navigation/GoBack';
-import NavbarBusiness from '../../components/Navbar-Navigation/NavbarBusiness';
-import VerticalNavbarBusiness from '../../components/Navbar-Navigation/VerticalNavbarBusiness';
-import { address, Client, Order, ProductInOrder } from '../../types';
-import * as Select from '@radix-ui/react-select';
-import ProductInOrderItem from '../../components/OrdersBusiness/ProductInOrderItem';
-import OrderItem from '../../components/OrdersBusiness/OrderItem';
+import GoBack from '../../../../components/Navbar-Navigation/GoBack';
+import NavbarBusiness from '../../../../components/Navbar-Navigation/NavbarBusiness';
+import VerticalNavbarBusiness from '../../../../components/Navbar-Navigation/VerticalNavbarBusiness';
+import ProductInOrderItem from '../../../../components/OrdersBusiness/ProductInOrderItem';
+import { address, Client, ProductInOrder, Order } from '../../../../types';
 
 function SpecificOrderContainer() {
 	let shippingAdress: address = {
@@ -61,7 +58,7 @@ function SpecificOrderContainer() {
 			<div className="flex">
 				<VerticalNavbarBusiness />
 				<div className="mx-8 mt-5 w-full">
-					<GoBack link="/BusinessPage/OrdersViewPage" text="Órdenes" />
+					<GoBack link="/business/OrdersViewPage" text="Órdenes" />
 					<div className="flex mt-3 items-end">
 						<h2 className="text-4xl font-bold mr-3">#{order.id}</h2>
 						<h2>{order.date.toISOString()}</h2>

@@ -1,11 +1,9 @@
 import Link from 'next/link';
-import React, { ReactElement } from 'react';
-import ProductItem from '../../components/CRUDProductsBusiness/ProductItem';
-import NavbarBusiness from '../../components/Navbar-Navigation/NavbarBusiness';
-import VerticalNavbarBusiness from '../../components/Navbar-Navigation/VerticalNavbarBusiness';
-import BusinessLayout from '../../layouts/BusinessLayout';
-import { Item } from '../../types';
-import { NextPageWithLayout } from '../_app';
+import { ReactElement } from 'react';
+import ProductItem from '../../../../components/CRUDProductsBusiness/ProductItem';
+import BusinessLayout from '../../../../layouts/BusinessLayout';
+import { Item } from '../../../../types';
+import { NextPageWithLayout } from '../../../_app';
 
 const CRUDProductBusiness: NextPageWithLayout = () => {
 	let products: Item[] = [
@@ -100,9 +98,7 @@ const CRUDProductBusiness: NextPageWithLayout = () => {
 						<h1 className="text-2xl font-bold">Productos</h1>
 					</div>
 					<div className=" bg-purple-400">
-						<Link href="/BusinessPage/AddProductContainer">
-							Adicionar producto
-						</Link>
+						<Link href="/business/AddProductContainer">Adicionar producto</Link>
 					</div>
 				</div>
 				<div className="flex flex-row items-center border-b-2 border-b-gray-100">
