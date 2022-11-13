@@ -8,7 +8,7 @@ function OrderItem({ order }: { order: Order }) {
 	return (
 		<div className="flex flex-row items-center border-b-2 border-b-gray-100 py-3">
 			<div className="basis-1/5">
-				<Link href="/business/SpecificOrderContainer">
+				<Link href="/business/test/orders/001">
 					<h3 className="underline underline-offset-2 text-blue-500">
 						{order.id}
 					</h3>

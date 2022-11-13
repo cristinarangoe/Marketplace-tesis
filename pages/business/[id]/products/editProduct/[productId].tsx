@@ -15,7 +15,7 @@ function EditProductContainer() {
 	};
 	return (
 		<div>
-			<GoBack link="/business/CRUDProductBusiness" text="Atras" />
+			<GoBack link="/business/test/products" text="Atras" />
 			<FormEditProduct product={producto} />
 		</div>
 	);

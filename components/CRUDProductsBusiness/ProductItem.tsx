@@ -26,7 +26,7 @@ const ProductItem = ({ producto }: { producto: Item }) => {
 			</div>
 			<div className="flex flex-row basis-1/5">
 				<div className="basis-1/2">
-					<Link href="/business/EditProductContainer">
+					<Link href="/business/test/products/editProduct/001">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"

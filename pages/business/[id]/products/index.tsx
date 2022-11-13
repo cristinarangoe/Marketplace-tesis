@@ -98,7 +98,9 @@ const CRUDProductBusiness: NextPageWithLayout = () => {
 						<h1 className="text-2xl font-bold">Productos</h1>
 					</div>
 					<div className=" bg-purple-400">
-						<Link href="/business/AddProductContainer">Adicionar producto</Link>
+						<Link href="/business/test/products/addProductForm">
+							Adicionar producto
+						</Link>
 					</div>
 				</div>
 				<div className="flex flex-row items-center border-b-2 border-b-gray-100">
