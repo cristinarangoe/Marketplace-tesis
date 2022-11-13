@@ -12,11 +12,7 @@ export default function UserLayout({ children }: LayoutProps) {
 		<div>
 			<Navbar />
 			<div className="flex">
-				<VerticalBarUser
-					styleUser=""
-					styleAdress="border-r-4 border-r-tiffany-green"
-					styleOrders=""
-				/>
+				<VerticalBarUser />
 				<div className="w-full px-16 mt-8">{children}</div>
 			</div>
 		</div>

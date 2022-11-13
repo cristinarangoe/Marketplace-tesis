@@ -4,21 +4,23 @@ import { SupabaseAuthUser } from '../types/user';
 
 interface ContextProps {
 	userStore: SupabaseAuthUser | undefined;
-	isAuthenticated: boolean;
+	isAuthenticatedProp: boolean | undefined;
 	saveSession: (user: SupabaseAuthUser) => void;
 	logout: () => void;
 }
 
 export const UserContext = React.createContext<ContextProps>({
 	userStore: undefined,
-	isAuthenticated: false,
+	isAuthenticatedProp: undefined,
 	saveSession: () => {},
 	logout: () => {},
 });
 
 export default function ContextUser({ children }: { children: ReactElement }) {
 	const [user, setUser] = useState<SupabaseAuthUser>();
-	const [isAuthenticated, setAuthenticatedStatus] = useState(false);
+	const [isAuthenticated, setAuthenticatedStatus] = useState<
+		boolean | undefined
+	>();
 	const router = useRouter();
 
 	//function to logoutUser
@@ -36,9 +38,9 @@ export default function ContextUser({ children }: { children: ReactElement }) {
 	return (
 		<UserContext.Provider
 			value={{
-				isAuthenticated,
-				logout,
-				saveSession,
+				isAuthenticatedProp: isAuthenticated,
+				logout: logout,
+				saveSession: saveSession,
 				userStore: user,
 			}}
 		>
