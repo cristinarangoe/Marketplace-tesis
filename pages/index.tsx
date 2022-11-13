@@ -1,8 +1,6 @@
-import { ReactElement } from 'react';
 import CategoriesCarousel from '../components/HomeElementsMarketplace/CategoriesCarousel';
 import PrincipalCarousel from '../components/HomeElementsMarketplace/PrincipalCarousel';
 import Navbar from '../components/Navbar-Navigation/Navbar';
-import BusinessLayout from '../layouts/BusinessLayout';
 import { NextPageWithLayout } from './_app';
 
 const Home: NextPageWithLayout = () => {

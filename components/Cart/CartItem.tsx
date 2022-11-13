@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGlobalContext } from '../../Context/Index';
+import { useCartContext } from '../../Context/Index';
 import { ItemInCart } from '../../types';
 import ProductCount from '../Products/ProductCount';
 import * as Toast from '@radix-ui/react-toast';
@@ -9,7 +9,7 @@ interface ProductProps {
 }
 
 const CartItem: React.FC<ProductProps> = ({ producto }) => {
-	const { removeItemProp, addItemProp } = useGlobalContext();
+	const { removeItemProp, addItemProp } = useCartContext();
 	const [open, setOpen] = useState(false);
 
 	function adding(producto: ItemInCart) {

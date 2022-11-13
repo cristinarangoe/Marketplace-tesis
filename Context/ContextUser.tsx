@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { Dispatch, ReactElement, SetStateAction, useState } from 'react';
 import { SupabaseAuthUser } from '../types/user';
 
@@ -18,11 +19,13 @@ export const UserContext = React.createContext<ContextProps>({
 export default function ContextUser({ children }: { children: ReactElement }) {
 	const [user, setUser] = useState<SupabaseAuthUser>();
 	const [isAuthenticated, setAuthenticatedStatus] = useState(false);
+	const router = useRouter();
 
 	//function to logoutUser
 	function logout() {
 		setUser(() => undefined);
 		setAuthenticatedStatus(false);
+		router.push('/');
 	}
 
 	function saveSession(u: SupabaseAuthUser) {
