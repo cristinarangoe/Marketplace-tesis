@@ -1,3 +1,4 @@
+import { AuthGuardClient } from '../components/AuthGuard';
 import Navbar from '../components/Navbar-Navigation/Navbar';
 import AddressItem from '../components/UserProfileMarketplace/AddressItem';
 import DialogAddAddress from '../components/UserProfileMarketplace/DialogAddAddress';
@@ -9,12 +10,14 @@ interface LayoutProps {
 
 export default function UserLayout({ children }: LayoutProps) {
 	return (
-		<div>
-			<Navbar />
-			<div className="flex">
-				<VerticalBarUser />
-				<div className="w-full px-16 mt-8">{children}</div>
+		<AuthGuardClient>
+			<div>
+				<Navbar />
+				<div className="flex">
+					<VerticalBarUser />
+					<div className="w-full px-16 mt-8">{children}</div>
+				</div>
 			</div>
-		</div>
+		</AuthGuardClient>
 	);
 }

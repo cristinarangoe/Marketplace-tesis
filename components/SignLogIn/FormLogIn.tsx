@@ -31,7 +31,12 @@ const FormLogIn = () => {
 			};
 			saveSession(userSession);
 			console.log(user);
-			router.push('/');
+			if (user.user.user_metadata.userType == 'business') {
+				router.push('/business');
+			}
+			if (user.user.user_metadata.userType == 'client') {
+				router.push('/');
+			}
 		} catch (e) {
 			console.log('loginerror', e);
 		}

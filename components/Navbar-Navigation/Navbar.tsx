@@ -7,11 +7,10 @@ import CategoriesNavigationMenu from './CategoriesNavigationMenu';
 import { CartPlaceholder } from './CartPlaceholder';
 
 const Navbar = () => {
-	const { userStore, isAuthenticatedProp } = useUserContext();
+	const { userStore, isAuthenticated } = useUserContext();
 
 	const user = userStore;
-
-	console.log('navbar is isAuthenticated', isAuthenticatedProp);
+	console.log(user);
 
 	return (
 		<div className="z-10">
@@ -36,7 +35,7 @@ const Navbar = () => {
 				</div>
 				<div className="flex flex-row absolute right-0 mr-5">
 					<ul className="flex flex-row items-center">
-						{isAuthenticatedProp ? (
+						{isAuthenticated ? (
 							<>
 								<li className="mr-5">
 									<Link href="/marketplace/user/test/profile">

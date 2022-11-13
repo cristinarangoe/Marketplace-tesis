@@ -4,14 +4,14 @@ import { SupabaseAuthUser } from '../types/user';
 
 interface ContextProps {
 	userStore: SupabaseAuthUser | undefined;
-	isAuthenticatedProp: boolean | undefined;
+	isAuthenticated: boolean | undefined;
 	saveSession: (user: SupabaseAuthUser) => void;
 	logout: () => void;
 }
 
 export const UserContext = React.createContext<ContextProps>({
 	userStore: undefined,
-	isAuthenticatedProp: undefined,
+	isAuthenticated: undefined,
 	saveSession: () => {},
 	logout: () => {},
 });
@@ -38,7 +38,7 @@ export default function ContextUser({ children }: { children: ReactElement }) {
 	return (
 		<UserContext.Provider
 			value={{
-				isAuthenticatedProp: isAuthenticated,
+				isAuthenticated: isAuthenticated,
 				logout: logout,
 				saveSession: saveSession,
 				userStore: user,
