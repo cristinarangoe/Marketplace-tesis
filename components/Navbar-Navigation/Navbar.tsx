@@ -2,11 +2,11 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import DialogClientBusiness from './DialogClientBusiness';
-import { useGlobalContext } from '../../Context/Index';
+import { useCartContext } from '../../Context/Index';
 import CategoriesNavigationMenu from './CategoriesNavigationMenu';
 
 const Navbar = () => {
-	const { finalQuantityProp } = useGlobalContext();
+	const { finalQuantityProp } = useCartContext();
 
 	return (
 		<div className="z-10">

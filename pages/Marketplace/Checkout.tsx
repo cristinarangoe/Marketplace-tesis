@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import CheckoutProductItem from '../../components/Cart/CheckoutProductItem';
 import GoBack from '../../components/Navbar-Navigation/GoBack';
-import { useGlobalContext } from '../../Context/Index';
+import { useCartContext } from '../../Context/Index';
 import { useForm } from 'react-hook-form';
 import { address } from '../../types';
 import DialogAddAddress from '../../components/UserProfileMarketplace/DialogAddAddress';
@@ -13,7 +13,7 @@ type FormData = {
 };
 
 function Checkout() {
-	const { productsCartProp, clearProp, totalCostProp } = useGlobalContext();
+	const { productsCartProp, clearProp, totalCostProp } = useCartContext();
 	const {
 		register,
 		setValue,
@@ -177,7 +177,7 @@ function Checkout() {
 					<h2 className="text-2xl font-semibold">Resumen de la compra</h2>
 					<div>
 						{productsCartProp.map((prod, index) => (
-							<CheckoutProductItem prod={prod} />
+							<CheckoutProductItem prod={prod} key={index} />
 						))}
 					</div>
 

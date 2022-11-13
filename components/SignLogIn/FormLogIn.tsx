@@ -1,6 +1,9 @@
+import Router, { useRouter } from 'next/router';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useUserContext } from '../../Context/Index';
 import { authUser } from '../../lib/auth';
+import { SupabaseAuthUser } from '../../types/user';
 
 type FormData = {
 	email: string;
@@ -8,6 +11,8 @@ type FormData = {
 };
 
 const FormLogIn = () => {
+	const { saveSession } = useUserContext();
+	const router = useRouter();
 	const {
 		register,
 		setValue,
@@ -17,7 +22,16 @@ const FormLogIn = () => {
 	const onSubmit: SubmitHandler<FormData> = async (data) => {
 		try {
 			const user = await authUser(data);
+			if (!user.user) throw Error('not user');
+			const userSession: SupabaseAuthUser = {
+				email: user.user.email!,
+				user_metadata: user.user.user_metadata! as {
+					userType: 'client' | 'business';
+				},
+			};
+			saveSession(userSession);
 			console.log(user);
+			router.push('/');
 		} catch (e) {
 			console.log('loginerror', e);
 		}

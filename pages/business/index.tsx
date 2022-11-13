@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import NavbarBusiness from '../../components/Navbar-Navigation/NavbarBusiness';
 import VerticalNavbarBusiness from '../../components/Navbar-Navigation/VerticalNavbarBusiness';
 import OrderItem from '../../components/OrdersBusiness/OrderItem';
+import BusinessLayout from '../../layouts/BusinessLayout';
 import { address, Client, Order, ProductInOrder } from '../../types';
+import { NextPageWithLayout } from '../_app';
 
-function BusinessHome() {
+const BusinessHome: NextPageWithLayout = () => {
 	return (
-		<div>
-			<NavbarBusiness />
-			<div className="flex">
-				<VerticalNavbarBusiness />
-				<div className="mx-8 mt-5 w-full">
-					<div className="mb-2">
-						<h1 className="text-2xl font-bold">Business Home</h1>
-					</div>
-				</div>
-			</div>
-		</div>
+		<>
+			<h1 className="text-2xl font-bold">Business Home</h1>
+		</>
 	);
-}
+};
+
+BusinessHome.getLayout = function getLayout(page: ReactElement) {
+	return <BusinessLayout>{page}</BusinessLayout>;
+};
 
 export default BusinessHome;

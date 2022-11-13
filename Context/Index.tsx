@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 
-import { GlobalContext } from './ContextProductsCart'
+import { CartContext } from './ContextProductsCart';
+import { UserContext } from './ContextUser';
 
-export const useGlobalContext = () => useContext(GlobalContext);
+export const useCartContext = () => useContext(CartContext);
+export const useUserContext = () => useContext(UserContext);

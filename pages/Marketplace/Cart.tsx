@@ -2,11 +2,11 @@ import Link from "next/link";
 import React from "react";
 import CartItem from "../../components/Cart/CartItem";
 import Navbar from "../../components/Navbar-Navigation/Navbar";
-import { useGlobalContext } from "../../Context/Index";
+import { useCartContext } from "../../Context/Index";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 function Cart() {
-  const { productsCartProp, clearProp, totalCostProp } = useGlobalContext();
+  const { productsCartProp, clearProp, totalCostProp } = useCartContext();
   const [open, setOpen] = React.useState(false);
 
   if (productsCartProp.length === 0)
