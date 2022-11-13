@@ -2,22 +2,24 @@ import Link from 'next/link';
 import React from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { LogoutDialog } from './LogoutDialog';
+import { useRouter } from 'next/router';
 
-function VerticalBarUser({
-	styleUser,
-	styleAdress,
-	styleOrders,
-}: {
-	styleUser: any;
-	styleAdress: any;
-	styleOrders: any;
-}) {
+function VerticalBarUser() {
+	const router = useRouter();
+
+	const actualRoute = (s: string) => router.asPath.includes(s);
+	const actualRouteStyle = 'border-r-4 border-r-tiffany-green';
+
 	return (
 		<div className=" h-screen w-1/5 flex flex-col pt-5 border-r-2 border-r-gray-200 pl-20 ">
 			<h1 className="text-2xl font-semibold mt-5">Hola, cristina!</h1>
 			<div className="mt-8 w-full">
 				<Link href="/marketplace/user/test/profile">
-					<div className={`flex flex-row ${styleUser} cursor-pointer hover:`}>
+					<div
+						className={`flex flex-row ${
+							actualRoute('profile') ? actualRouteStyle : ''
+						} cursor-pointer hover:`}
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -36,7 +38,11 @@ function VerticalBarUser({
 					</div>
 				</Link>
 				<Link href="/marketplace/user/test/address">
-					<div className={`flex flex-row mt-6  ${styleAdress} cursor-pointer`}>
+					<div
+						className={`flex flex-row mt-6  ${
+							actualRoute('address') ? actualRouteStyle : ''
+						} cursor-pointer`}
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -56,7 +62,11 @@ function VerticalBarUser({
 					</div>
 				</Link>
 				<Link href="/marketplace/user/test/orders">
-					<div className={`flex flex-row mt-6  ${styleOrders} cursor-pointer`}>
+					<div
+						className={`flex flex-row mt-6 ${
+							actualRoute('orders') ? actualRouteStyle : ''
+						} cursor-pointer`}
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"

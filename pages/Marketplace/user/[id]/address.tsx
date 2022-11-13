@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Navbar from '../../../../components/Navbar-Navigation/Navbar';
 import AddressItem from '../../../../components/UserProfileMarketplace/AddressItem';
 import DialogAddAddress from '../../../../components/UserProfileMarketplace/DialogAddAddress';
 import VerticalBarUser from '../../../../components/UserProfileMarketplace/VerticalBarUser';
+import UserLayout from '../../../../layouts/UserLayout';
 import { address } from '../../../../types';
+import { NextPageWithLayout } from '../../../_app';
 
-function UserAdresses() {
+const UserAdresses: NextPageWithLayout = () => {
 	let addreses: address[] = [
 		{
 			state: 'Antioquia',
@@ -33,28 +35,22 @@ function UserAdresses() {
 		},
 	];
 	return (
-		<div>
-			<Navbar />
-			<div className="flex">
-				<VerticalBarUser
-					styleUser=""
-					styleAdress="border-r-4 border-r-tiffany-green"
-					styleOrders=""
-				/>
-				<div className="w-full px-16 mt-8">
-					<div className="flex flex-row justify-between items-center">
-						<h2 className="text-3xl font-bold">Direcciones</h2>
-						<DialogAddAddress />
-					</div>
-					<div className="grid grid-cols-3 gap-5 mt-5">
-						{addreses.map((address, index) => (
-							<AddressItem address={address} key={index} />
-						))}
-					</div>
-				</div>
+		<>
+			<div className="flex flex-row justify-between items-center">
+				<h2 className="text-3xl font-bold">Direcciones</h2>
+				<DialogAddAddress />
 			</div>
-		</div>
+			<div className="grid grid-cols-3 gap-5 mt-5">
+				{addreses.map((address, index) => (
+					<AddressItem address={address} key={index} />
+				))}
+			</div>
+		</>
 	);
-}
+};
+
+UserAdresses.getLayout = function getLayout(page: ReactElement) {
+	return <UserLayout>{page}</UserLayout>;
+};
 
 export default UserAdresses;

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Navbar from '../../../../../components/Navbar-Navigation/Navbar';
 import OrderItemUser from '../../../../../components/UserProfileMarketplace/OrderItemUser';
 import VerticalBarUser from '../../../../../components/UserProfileMarketplace/VerticalBarUser';
+import UserLayout from '../../../../../layouts/UserLayout';
 import {
 	Client,
 	businessInOrder,
@@ -9,8 +10,9 @@ import {
 	Order,
 	address,
 } from '../../../../../types';
+import { NextPageWithLayout } from '../../../../_app';
 
-function UserOrders() {
+const UserOrders: NextPageWithLayout = () => {
 	let shippingAdress: address = {
 		state: 'Antioquia',
 		city: 'Medellín',
@@ -93,45 +95,39 @@ function UserOrders() {
 		},
 	];
 	return (
-		<div>
-			<Navbar />
-			<div className="flex">
-				<VerticalBarUser
-					styleUser=""
-					styleAdress=""
-					styleOrders="border-r-4 border-r-tiffany-green"
-				/>
-				<div className="w-full px-16 mt-8">
-					<div className="mb-2">
-						<h1 className="text-3xl font-bold">Órdenes</h1>
-					</div>
-					<div className="flex flex-row items-center border-b-2 border-b-gray-100 mt-5 pb-2">
-						<div className="basis-1/4 mx-auto">
-							<h3 className="text-lg font-medium text-medium-violet">
-								Número de orden
-							</h3>
-						</div>
-						<div className="basis-1/4 mx-auto">
-							<h3 className="text-lg font-medium text-medium-violet">Fecha</h3>
-						</div>
-						<div className="basis-1/4">
-							<h3 className="text-lg font-medium text-medium-violet">
-								Emprendimiento
-							</h3>
-						</div>
-						<div className="basis-1/4">
-							<h3 className="text-lg font-medium text-medium-violet">Total</h3>
-						</div>
-					</div>
-					<div>
-						{orders.map((order, index) => (
-							<OrderItemUser key={index} order={order} />
-						))}
-					</div>
+		<>
+			<div className="mb-2">
+				<h1 className="text-3xl font-bold">Órdenes</h1>
+			</div>
+			<div className="flex flex-row items-center border-b-2 border-b-gray-100 mt-5 pb-2">
+				<div className="basis-1/4 mx-auto">
+					<h3 className="text-lg font-medium text-medium-violet">
+						Número de orden
+					</h3>
+				</div>
+				<div className="basis-1/4 mx-auto">
+					<h3 className="text-lg font-medium text-medium-violet">Fecha</h3>
+				</div>
+				<div className="basis-1/4">
+					<h3 className="text-lg font-medium text-medium-violet">
+						Emprendimiento
+					</h3>
+				</div>
+				<div className="basis-1/4">
+					<h3 className="text-lg font-medium text-medium-violet">Total</h3>
 				</div>
 			</div>
-		</div>
+			<div>
+				{orders.map((order, index) => (
+					<OrderItemUser key={index} order={order} />
+				))}
+			</div>
+		</>
 	);
-}
+};
+
+UserOrders.getLayout = function getLayout(page: ReactElement) {
+	return <UserLayout>{page}</UserLayout>;
+};
 
 export default UserOrders;
