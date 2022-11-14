@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FormAddProduct from '../../../../components/CRUDProductsBusiness/FormAddProduct';
 import GoBack from '../../../../components/Navbar-Navigation/GoBack';
 

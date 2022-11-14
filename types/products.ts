@@ -5,6 +5,11 @@ export interface Product {
 		type: string;
 		value: string;
 	}[];
-	image: FileList;
+	image: File;
 	price: number;
+}
+
+export interface DBProduct extends Product {
+	idBusiness: string;
+	businessType: string;
 }

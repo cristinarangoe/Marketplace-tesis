@@ -5,6 +5,7 @@ import { useUserContext } from '../../Context/Index';
 import { authUser } from '../../lib/auth';
 import { getBusinessInfo } from '../../lib/business';
 import { SupabaseAuthUser } from '../../types/user';
+import { setBusinessInfo } from '../../signals/businessSignal';
 
 type FormData = {
 	email: string;
@@ -33,7 +34,7 @@ const FormLogIn = () => {
 			saveSession(userSession);
 			if (user.user.user_metadata.userType == 'business') {
 				const businessInfo = await getBusinessInfo(user.user.email!);
-				console.log(businessInfo);
+				setBusinessInfo(businessInfo);
 				router.push(`/business/${businessInfo.businessName}`);
 			}
 			if (user.user.user_metadata.userType == 'client') {

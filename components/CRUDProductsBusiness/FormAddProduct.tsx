@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 import { type } from 'os';
-import React, { useRef, useState } from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 import {
 	Control,
 	useFieldArray,
@@ -8,7 +8,10 @@ import {
 	UseFormRegister,
 	UseFormRegisterReturn,
 } from 'react-hook-form';
+import { saveProducts } from '../../lib/business/products';
 import { generateVariants, ProductsGenerated } from '../../lib/products';
+import { businessInfo } from '../../signals/businessSignal';
+import { DBProduct } from '../../types/products';
 import { GenericInput } from '../genericInput';
 
 type FormData = {
@@ -176,17 +179,24 @@ const GeneratedVariantsSection = ({
 		control,
 	});
 
-	const onSubmit = handleSubmit((data) => {
-		const products = [];
-		for (let i = 0; i < variants.length; i++) {
-			const p: Product = {
-				...variants[i],
-				image: data.products[i].image,
-				price: data.products[i].price,
-			};
-			products.push(p);
+	const onSubmit = handleSubmit(async (data) => {
+		const products: DBProduct[] = [];
+		console.log(businessInfo.value);
+		if (businessInfo.value != undefined) {
+			for (let i = 0; i < variants.length; i++) {
+				products.push({
+					...variants[i],
+					idBusiness: businessInfo.value!._id,
+					businessType: businessInfo.value!.businessType,
+					image: data.products[i].image[0],
+					price: data.products[i].price,
+				});
+			}
+			const res = await saveProducts(products);
+			console.log(res);
+		} else {
+			alert("can't find user data");
 		}
-		console.log(products);
 	});
 
 	const PlaceholderName = ({ n }: { n: string }) => <p>{n.split(' ').pop()}</p>;
@@ -204,7 +214,9 @@ const GeneratedVariantsSection = ({
 						<input
 							type="file"
 							accept="image/*"
-							{...register(`products.${key}.image`, { required: true })}
+							{...register(`products.${key}.image`, {
+								required: true,
+							})}
 						/>
 					</div>
 				))}
