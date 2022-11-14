@@ -3,6 +3,7 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useUserContext } from '../../Context/Index';
 import { authUser } from '../../lib/auth';
+import { getBusinessInfo } from '../../lib/business';
 import { SupabaseAuthUser } from '../../types/user';
 
 type FormData = {
@@ -30,9 +31,10 @@ const FormLogIn = () => {
 				},
 			};
 			saveSession(userSession);
-			console.log(user);
 			if (user.user.user_metadata.userType == 'business') {
-				router.push('/business/test');
+				const businessInfo = await getBusinessInfo(user.user.email!);
+				console.log(businessInfo);
+				router.push(`/business/${businessInfo.businessName}`);
 			}
 			if (user.user.user_metadata.userType == 'client') {
 				router.push('/');
