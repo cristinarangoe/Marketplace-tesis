@@ -7,24 +7,27 @@ import { Item } from '../../types';
 const ProductItem = ({ producto }: { producto: Item }) => {
 	return (
 		<div className="flex flex-row items-center border-b-2 border-b-gray-100">
-			<div className="basis-1/5">
+			<div className="relative basis-1/6 h-[6rem]">
+				<div className='h-max-[6rem] w-auto '>
 				<Image
 					src={producto.imagen}
 					alt={producto.nombre}
-					width={60}
-					height={80}
+					layout='fill'
+					objectFit='contain'
 				/>
+				</div>
+
 			</div>
-			<div className="basis-1/5 pr-2">
+			<div className="basis-2/6 px-5">
 				<h3>{producto.nombre}</h3>
 			</div>
-			<div className="basis-1/5">
+			<div className="basis-1/6">
 				<h3>{producto.stock}</h3>
 			</div>
-			<div className="basis-1/5">
-				<h3>{producto.precio}</h3>
+			<div className="basis-1/6">
+				<h3>${producto.precio}</h3>
 			</div>
-			<div className="flex flex-row basis-1/5">
+			<div className="flex flex-row basis-1/6">
 				<div className="basis-1/2">
 					<Link href="/business/test/products/editProduct/001">
 						<svg
@@ -33,7 +36,7 @@ const ProductItem = ({ producto }: { producto: Item }) => {
 							viewBox="0 0 24 24"
 							strokeWidth="1.5"
 							stroke="currentColor"
-							className="w-6 h-6"
+							className="w-6 h-6 stroke-2"
 						>
 							<path
 								strokeLinecap="round"
@@ -50,7 +53,7 @@ const ProductItem = ({ producto }: { producto: Item }) => {
 						viewBox="0 0 24 24"
 						strokeWidth="1.5"
 						stroke="currentColor"
-						className="w-6 h-6"
+						className="w-6 h-6 stroke-red-500 stroke-2"
 					>
 						<path
 							strokeLinecap="round"
