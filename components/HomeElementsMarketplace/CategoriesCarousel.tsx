@@ -13,52 +13,32 @@ function CategoriesCarousel() {
 
   let categories: Object[] = [
     {
-      name: "Comida",
-      image: "/Logo.png",
+      name: "Alimentos",
+      image: "/platoMexicano.png",
     },
     {
       name: "Moda",
-      image: "/Logo.png",
+      image: "/shirt.jpg",
     },
     {
-      name: "Productos para mascotas sdfsdfsdfsdfsdfsdf",
-      image: "/Logo.png",
+      name: "Productos para mascotas",
+      image: "/BorderCollie.webp",
     },
     {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
+      name: "Hogar",
+      image: "/House.webp",
     },
     {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
+      name: "Variedades/regalos",
+      image: "/Agenda.webp",
     },
     {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
+      name: "Zapatos",
+      image: "/shoes.jpg",
     },
     {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
-    },
-    {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
-    },
-    {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
-    },
-    {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
-    },
-    {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
-    },
-    {
-      name: "Accesorios para el hogar",
-      image: "/Logo.png",
+      name: "Artículos de belleza",
+      image: "/beauty.jpg",
     },
   ];
   return (
@@ -66,7 +46,7 @@ function CategoriesCarousel() {
       <h2 className="font-semibold text-2xl">Compra por categorias</h2>
       <div className="relative flex flex-row items-center group">
         <button
-          className="transition-all h-10 w-10 hover:h-16 hover:w-16 left-0 rounded-full absolute cursor-pointer hidden group-hover:block z-10 bg-cyan-500"
+          className="transition-all h-10 w-10 hover:h-16 hover:w-16 left-0 rounded-full absolute cursor-pointer hidden group-hover:block z-10 bg-medium-violet"
           onClick={slideLeft}
         >
           <span>
@@ -74,7 +54,7 @@ function CategoriesCarousel() {
               xmlns="http://www.w3.org/2000/svg"
               className=" "
               viewBox="0 0 20 20"
-              fill="black"
+              fill="white"
             >
               <path
                 fillRule="evenodd"
@@ -94,7 +74,7 @@ function CategoriesCarousel() {
           ))}
         </div>
         <button
-          className=" transition-all h-10 w-10 hover:h-16 hover:w-16 right-0 rounded-full absolute cursor-pointer hidden group-hover:block z-10 bg-cyan-500 border-transparent"
+          className=" transition-all h-10 w-10 hover:h-16 hover:w-16 right-0 rounded-full absolute cursor-pointer hidden group-hover:block z-10 bg-medium-violet border-transparent"
           onClick={slideRight}
         >
           <span>

@@ -14,21 +14,23 @@ function CategorieItem({ cat }: any) {
     //   </Link>
     // </div>
 
-    <div className="inline-block w-60 p-4 m-4  shadow-md rounded-lg ease-in-out duration-300">
+    <div className="inline-block w-80 p-4 m-4  shadow-md rounded-lg ease-in-out duration-300 border">
       <div className="flex flex-col">
-        <div>
+        <div className="relative h-[10rem]">
           <Link href="/Marketplace/ProductDetail">
-            <Image
-              className="px-2"
-              src={cat.image}
-              alt={cat.name}
-              width="100"
-              height="100"
-            />
+            <a>
+              <Image
+                className="px-2"
+                src={cat.image}
+                alt={cat.name}
+                layout="fill"
+                objectFit="contain"
+              />
+            </a>
           </Link>
         </div>
 
-        <h3 className="text-2xl my-4">
+        <h3 className="text-2xl my-4 text-center">
           <Link href="/Marketplace/ProductDetail">{cat.name}</Link>
         </h3>
       </div>

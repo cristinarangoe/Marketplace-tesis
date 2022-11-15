@@ -3,6 +3,7 @@ import { useCartContext } from '../../Context/Index';
 import { ItemInCart } from '../../types';
 import ProductCount from '../Products/ProductCount';
 import * as Toast from '@radix-ui/react-toast';
+import Image from 'next/image';
 
 interface ProductProps {
 	producto: ItemInCart;
@@ -29,11 +30,13 @@ const CartItem: React.FC<ProductProps> = ({ producto }) => {
 	return (
 		<div className="flex flex-row items-center border-b py-5">
 			<div className="flex flex-row items-center basis-2/6">
-				<div className="basis-1/2 pr-5">
-					<img
+				<div className="basis-1/2 pr-5 relative h-[10rem] w-auto">
+					<Image
 						src={producto.imagen}
 						className="w-32 lg:w-40 lg:pr-2"
 						alt={producto.nombre}
+						layout='fill'
+						objectFit="contain"
 					/>
 				</div>
 				<div className="basis-1/2">

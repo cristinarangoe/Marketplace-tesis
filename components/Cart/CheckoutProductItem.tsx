@@ -1,11 +1,17 @@
+import Image from "next/image";
 import React from "react";
 import { ItemInCart } from "../../types";
 
 function CheckoutProductItem({ prod }: { prod: ItemInCart }) {
   return (
     <div className="flex flex-row items-center border-b border-b-gray-200 py-3">
-      <div className="basis-1/4 mr-3">
-        <img src={prod.imagen} />
+      <div className="basis-1/4 mr-3 relative h-[5rem] w-auto">
+        <Image
+          src={prod.imagen}
+          alt={prod.nombre}
+          layout="fill"
+          objectFit="contain"
+        />
       </div>
       <div className="basis-2/4 mr-3">
         <h2>{prod.nombre}</h2>

@@ -50,7 +50,7 @@ function BusinessesPage() {
           <h1 className='text-3xl font-bold'>Emprendimientos que hacen parte de nuestra plataforma!</h1>
           <p className='mt-3 text-lg font-semibold'>Presiona sobre cada uno de ellos para que conozcas lo que son y sus productos</p>
         </div>
-        <div className='grid grid-cols-6 gap-x-4 gap-y-8 mt-8'>
+        <div className='grid grid-cols-5 gap-x-4 gap-y-8 mt-8'>
           {businesses.map((bus, index) => (
             <BusinessItem business={bus} key={index}/>
           ))}
