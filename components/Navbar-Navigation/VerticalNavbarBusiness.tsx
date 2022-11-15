@@ -9,13 +9,13 @@ function VerticalNavbarBusiness() {
 	const { logout } = useUserContext();
 
 	const router = useRouter();
-
+	const { id } = router.query;
 	const actualRoute = (s: string) => router.asPath.includes(s);
 	const actualRouteStyle = 'border-r-4 border-r-tiffany-green';
 
 	return (
 		<div className=" h-screen w-72 flex flex-col pl-5 pt-5 border-r">
-			<Link href="/business/test">
+			<Link href={`/business/${id}`}>
 				<div className={`flex flex-row cursor-pointer`}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -34,10 +34,12 @@ function VerticalNavbarBusiness() {
 					<h3 className="pl-3">Home</h3>
 				</div>
 			</Link>
-			<Link href="/business/test/orders">
-				<div className={`flex flex-row mt-3 ${
-							actualRoute('/orders') ? actualRouteStyle : ''
-						} cursor-pointer `}>
+			<Link href={`/business/${id}/orders`}>
+				<div
+					className={`flex flex-row mt-3 ${
+						actualRoute('/orders') ? actualRouteStyle : ''
+					} cursor-pointer `}
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -55,10 +57,12 @@ function VerticalNavbarBusiness() {
 					<h3 className="pl-3">Ordenes</h3>
 				</div>
 			</Link>
-			<Link href="/business/test/products">
-				<div className={`flex flex-row mt-3 ${
-							actualRoute('/products') ? actualRouteStyle : ''
-						} cursor-pointer hover:`}>
+			<Link href={`/business/${id}/products`}>
+				<div
+					className={`flex flex-row mt-3 ${
+						actualRoute('/products') ? actualRouteStyle : ''
+					} cursor-pointer hover:`}
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -81,7 +85,7 @@ function VerticalNavbarBusiness() {
 					<h3 className="pl-3">Productos</h3>
 				</div>
 			</Link>
-			<Link href="/business/test">
+			<Link href={`/business/${id}`}>
 				<div className={`flex flex-row mt-3 cursor-pointer`}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
