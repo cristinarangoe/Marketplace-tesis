@@ -22,7 +22,7 @@ export async function saveAddress(address: AddressDB) {
 }
 
 export async function generateOrder(order: Order){
-	const data = await fetch(`http://localhost:5173/client/createOrder`, {
+	const data = await fetch(`${CLIENT_URL}/createOrder`, {
 		method: 'POST',
 		body: JSON.stringify(order),
 	});

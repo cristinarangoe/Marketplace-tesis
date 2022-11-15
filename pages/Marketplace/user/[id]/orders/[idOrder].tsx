@@ -114,8 +114,7 @@ const SpecificOrderUser: NextPageWithLayout = () => {
   // }
 
   const { data, error } = useSWR<Order, Error>(
-    // `${CLIENT_URL}/product/${idOrder}`,
-    `http://localhost:5173/client/order/${idOrder}`,
+    `${CLIENT_URL}/order/${idOrder}`,
     fetcher
   );
   if (error)

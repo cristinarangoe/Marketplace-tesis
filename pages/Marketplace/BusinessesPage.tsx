@@ -7,48 +7,8 @@ import fetcher from "../../lib/utils";
 import { BusinessInMarketplace, Item } from "../../types";
 
 function BusinessesPage() {
-  // let businesses = [
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  // ];
-
   const { data, error } = useSWR<BusinessInMarketplace[], Error>(
-    // `${CLIENT_URL}/business/`,
-    "http://localhost:5173/client/business",
+    `${CLIENT_URL}/business`,
     fetcher
   );
 
