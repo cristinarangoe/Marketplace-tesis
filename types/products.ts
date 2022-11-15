@@ -5,7 +5,7 @@ export interface Product {
 		type: string;
 		value: string;
 	}[];
-	image: File;
+	image: File | string;
 	price: number;
 }
 

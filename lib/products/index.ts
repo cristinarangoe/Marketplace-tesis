@@ -6,7 +6,7 @@ type VariantsFields = {
 		type: string;
 		options: string;
 	}[];
-	image?: FileList;
+	image?: FileList | string;
 	precio?: number;
 };
 
@@ -17,7 +17,7 @@ export interface ProductsGenerated {
 		type: string;
 		value: string;
 	}[];
-	image?: FileList;
+	image?: FileList | string;
 	price?: number;
 }
 

@@ -2,22 +2,28 @@ import Link from 'next/link';
 import React from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { useUserContext } from '../../Context/Index';
+import { useRouter } from 'next/router';
 
 function VerticalNavbarBusiness() {
 	const [open, setOpen] = React.useState(false);
 	const { logout } = useUserContext();
 
+	const router = useRouter();
+
+	const actualRoute = (s: string) => router.asPath.includes(s);
+	const actualRouteStyle = 'border-r-4 border-r-tiffany-green';
+
 	return (
-		<div className=" bg-blue-500 h-screen w-72 flex flex-col px-5 pt-5 ">
+		<div className=" h-screen w-72 flex flex-col pl-5 pt-5 border-r">
 			<Link href="/business/test">
-				<div className="flex flex-row">
+				<div className={`flex flex-row cursor-pointer`}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
 						strokeWidth="1.5"
 						stroke="currentColor"
-						className="w-6 h-6"
+						className="w-6 h-6 mr-3"
 					>
 						<path
 							strokeLinecap="round"
@@ -29,14 +35,16 @@ function VerticalNavbarBusiness() {
 				</div>
 			</Link>
 			<Link href="/business/test/orders">
-				<div className="flex flex-row mt-2">
+				<div className={`flex flex-row mt-3 ${
+							actualRoute('/orders') ? actualRouteStyle : ''
+						} cursor-pointer `}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
 						strokeWidth="1.5"
 						stroke="currentColor"
-						className="w-6 h-6"
+						className="w-6 h-6 mr-3"
 					>
 						<path
 							strokeLinecap="round"
@@ -48,14 +56,16 @@ function VerticalNavbarBusiness() {
 				</div>
 			</Link>
 			<Link href="/business/test/products">
-				<div className="flex flex-row mt-2">
+				<div className={`flex flex-row mt-3 ${
+							actualRoute('/products') ? actualRouteStyle : ''
+						} cursor-pointer hover:`}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
 						strokeWidth="1.5"
 						stroke="currentColor"
-						className="w-6 h-6"
+						className="w-6 h-6 mr-3"
 					>
 						<path
 							strokeLinecap="round"
@@ -72,14 +82,14 @@ function VerticalNavbarBusiness() {
 				</div>
 			</Link>
 			<Link href="/business/test">
-				<div className="flex flex-row mt-2">
+				<div className={`flex flex-row mt-3 cursor-pointer`}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
 						strokeWidth="1.5"
 						stroke="currentColor"
-						className="w-6 h-6"
+						className="w-6 h-6 mr-3"
 					>
 						<path
 							strokeLinecap="round"
