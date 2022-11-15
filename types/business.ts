@@ -1,12 +1,13 @@
 export interface BusinessInfo {
-	ID: string;
-	IDType: string;
-	businessName: string;
-	businessType: string;
-	email: string;
-	firstLastName: string;
-	firstName: string;
-	phone: number;
-	secondLastName: string;
 	_id: string;
+	firstName: string;
+	secondName?: string;
+	firstLastName: string;
+	secondLastName?: string;
+	phone: number;
+	email: string;
+	IDType: string;
+	ID: string;
+	businessType: string;
+	businessName: string;
 }
