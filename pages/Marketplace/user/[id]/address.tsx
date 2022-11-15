@@ -1,10 +1,14 @@
 import React, { ReactElement } from 'react';
+import useSWR from 'swr';
 import Navbar from '../../../../components/Navbar-Navigation/Navbar';
 import AddressItem from '../../../../components/UserProfileMarketplace/AddressItem';
 import DialogAddAddress from '../../../../components/UserProfileMarketplace/DialogAddAddress';
 import VerticalBarUser from '../../../../components/UserProfileMarketplace/VerticalBarUser';
 import UserLayout from '../../../../layouts/UserLayout';
-import { address } from '../../../../types';
+import { CLIENT_URL } from '../../../../lib/client';
+import fetcher from '../../../../lib/utils';
+import { userSignal } from '../../../../signals/userSignal';
+import { Address } from '../../../../types';
 import { NextPageWithLayout } from '../../../_app';
 
 const UserAdresses: NextPageWithLayout = () => {
@@ -34,7 +38,22 @@ const UserAdresses: NextPageWithLayout = () => {
 	// 		nameRecipient: 'Cristina Arango Escobar',
 	// 	},
 	// ];
-	const address: address[] = [];
+	const { data, error } = useSWR<Address[], Error>(
+		`${CLIENT_URL}/address/${userSignal.value?.data._id}`,
+		fetcher
+	);
+
+	if (error)
+		return (
+			<div>
+				<p>error</p>
+			</div>
+		);
+
+	if (!data) return <p>loading</p>;
+
+	console.log(data);
+	const address: Address[] = data;
 	return (
 		<>
 			<div className="flex flex-row justify-between items-center">

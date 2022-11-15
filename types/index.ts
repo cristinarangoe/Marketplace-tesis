@@ -32,15 +32,15 @@ export interface Order {
 }
 
 export interface businessInOrder {
-	id: string,
-	name: string,
+	id: string;
+	name: string;
 }
 
 export interface Client {
 	name: string;
 	phone: string;
 	email: string;
-	shippingAdress: address;
+	shippingAdress: Address;
 	id: string;
 }
 
@@ -80,7 +80,7 @@ export interface EntrepreneurSchema {
 	confirmPassword: string;
 }
 
-export interface address {
+export interface Address {
 	state: string;
 	city: string;
 	street: string;

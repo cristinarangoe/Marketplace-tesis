@@ -8,12 +8,12 @@ import {
 	businessInOrder,
 	ProductInOrder,
 	Order,
-	address,
+	Address,
 } from '../../../../../types';
 import { NextPageWithLayout } from '../../../../_app';
 
 const UserOrders: NextPageWithLayout = () => {
-	let shippingAdress: address = {
+	let shippingAdress: Address = {
 		state: 'Antioquia',
 		city: 'Medellín',
 		street: 'Calle 7 sur #23-03',
