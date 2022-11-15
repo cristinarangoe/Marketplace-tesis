@@ -3,6 +3,7 @@ import React from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { LogoutDialog } from './LogoutDialog';
 import { useRouter } from 'next/router';
+import { $userId } from '../../signals/userSignal';
 
 function VerticalBarUser() {
 	const router = useRouter();
@@ -14,7 +15,7 @@ function VerticalBarUser() {
 		<div className=" h-screen w-1/5 flex flex-col pt-5 border-r-2 border-r-gray-200 pl-20 ">
 			<h1 className="text-2xl font-semibold mt-5">Hola, cristina!</h1>
 			<div className="mt-8 w-full">
-				<Link href="/marketplace/user/test/profile">
+				<Link href={`/marketplace/user/${$userId}/profile`}>
 					<div
 						className={`flex flex-row ${
 							actualRoute('profile') ? actualRouteStyle : ''
@@ -37,7 +38,7 @@ function VerticalBarUser() {
 						<h3 className="pl-3">Usuario</h3>
 					</div>
 				</Link>
-				<Link href="/marketplace/user/test/address">
+				<Link href={`/marketplace/user/${$userId}/address`}>
 					<div
 						className={`flex flex-row mt-6  ${
 							actualRoute('address') ? actualRouteStyle : ''
@@ -61,7 +62,7 @@ function VerticalBarUser() {
 						<h3 className="pl-3">Direcciones</h3>
 					</div>
 				</Link>
-				<Link href="/marketplace/user/test/orders">
+				<Link href={`/marketplace/user/${$userId}/orders`}>
 					<div
 						className={`flex flex-row mt-6 ${
 							actualRoute('orders') ? actualRouteStyle : ''

@@ -1,13 +1,12 @@
-'use client';
-import { ClientUser, SupabaseAuthUser, BusinessUser } from './../types/user';
-import { effect, signal } from '@preact/signals-react';
+import { SupabaseAuthUser, User } from './../types/user';
+import { computed, effect, signal } from '@preact/signals-react';
 import { BusinessInfo } from '../types/business';
 import { getBusinessInfo } from '../lib/business';
 import { getClientInfo } from '../lib/client';
 
-export const userSignal = signal<ClientUser | BusinessUser | undefined>(
-	undefined
-);
+export const userSignal = signal<User | undefined>(undefined);
+
+export const $userId = computed(() => userSignal.value?.data?._id);
 
 export const setUserSession = async (user: SupabaseAuthUser) => {
 	let tmp;
@@ -15,7 +14,7 @@ export const setUserSession = async (user: SupabaseAuthUser) => {
 		const businessInfo = await getBusinessInfo(user.email!);
 		tmp = {
 			...user,
-			businessInfo,
+			data: businessInfo,
 		};
 	}
 
@@ -24,7 +23,7 @@ export const setUserSession = async (user: SupabaseAuthUser) => {
 		console.log(clientInfo);
 		tmp = {
 			...user,
-			clientInfo,
+			data: clientInfo,
 		};
 	}
 	userSignal.value = tmp;

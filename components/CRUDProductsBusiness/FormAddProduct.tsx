@@ -11,9 +11,9 @@ import {
 import { saveProducts } from '../../lib/business/products';
 import { generateVariants, ProductsGenerated } from '../../lib/products';
 import { userSignal } from '../../signals/userSignal';
+import { BusinessInfo } from '../../types/business';
 
 import { DBProduct } from '../../types/products';
-import { BusinessUser } from '../../types/user';
 import { GenericInput } from '../genericInput';
 
 type FormData = {
@@ -193,9 +193,8 @@ const GeneratedVariantsSection = ({
 			for (let i = 0; i < variants.length; i++) {
 				products.push({
 					...variants[i],
-					idBusiness: (userSignal.value! as BusinessUser).businessInfo._id,
-					businessType: (userSignal.value! as BusinessUser).businessInfo
-						.businessType,
+					idBusiness: userSignal.value!.data._id,
+					businessType: (userSignal.value!.data as BusinessInfo).businessType,
 					image: data.products[i].image,
 					price: data.products[i].price,
 				});

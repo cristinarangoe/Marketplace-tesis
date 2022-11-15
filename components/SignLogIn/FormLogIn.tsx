@@ -2,8 +2,9 @@ import Router, { useRouter } from 'next/router';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { authUser } from '../../lib/auth';
-import { BusinessUser, SupabaseAuthUser } from '../../types/user';
+import { SupabaseAuthUser } from '../../types/user';
 import { setUserSession, userSignal } from '../../signals/userSignal';
+import { BusinessInfo } from '../../types/business';
 
 type FormData = {
 	email: string;
@@ -33,9 +34,7 @@ const FormLogIn = () => {
 			await setUserSession(userSession);
 			if (user.user.user_metadata.userType == 'business') {
 				router.push(
-					`/business/${
-						(userSignal.value as BusinessUser)?.businessInfo.businessName
-					}`
+					`/business/${(userSignal.value?.data as BusinessInfo).businessName}`
 				);
 			}
 			if (user.user.user_metadata.userType == 'client') {

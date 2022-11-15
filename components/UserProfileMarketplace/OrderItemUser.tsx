@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { $userId } from '../../signals/userSignal';
 import { Order } from '../../types';
 
 //This is the product that is in the orders view page container, each of the orders
@@ -8,7 +9,7 @@ function OrderItemUser({ order }: { order: Order }) {
 	return (
 		<div className="flex flex-row items-center border-b-2 border-b-gray-100 py-3">
 			<div className="basis-1/4">
-				<Link href={`/marketplace/user/test/orders/${order.id}`}>
+				<Link href={`/marketplace/user/${$userId}/orders/${order.id}`}>
 					<h3 className="underline underline-offset-2 ">{order.id}</h3>
 				</Link>
 			</div>

@@ -8,18 +8,10 @@ export interface SupabaseAuthUser {
 	};
 }
 
-export interface ClientUser {
+export interface User {
 	email: string;
 	user_metadata: {
 		userType: 'client' | 'business';
 	};
-	clientInfo: ClientInfo;
-}
-
-export interface BusinessUser {
-	email: string;
-	user_metadata: {
-		userType: 'client' | 'business';
-	};
-	businessInfo: BusinessInfo;
+	data: ClientInfo | BusinessInfo;
 }

@@ -2,14 +2,12 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import DialogClientBusiness from './DialogClientBusiness';
-import { useUserContext } from '../../Context/Index';
 import CategoriesNavigationMenu from './CategoriesNavigationMenu';
 import { CartPlaceholder } from './CartPlaceholder';
-import { userSignal } from '../../signals/userSignal';
+import { $userId, userSignal } from '../../signals/userSignal';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
-	// const { userStore, isAuthenticated } = useUserContext();
-
 	return (
 		<div className="z-10">
 			<div className="flex flex-row w-full py-5 border-b-2 border-b-gray-200 h-fit items-center">
@@ -36,7 +34,7 @@ const Navbar = () => {
 						{userSignal.value ? (
 							<>
 								<li className="mr-5">
-									<Link href="/marketplace/user/test/profile">
+									<Link href={`/marketplace/user/${$userId.value}/profile`}>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="none"

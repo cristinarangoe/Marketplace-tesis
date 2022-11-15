@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProductCount from './ProductCount';
 import * as Toast from '@radix-ui/react-toast';
-import { useGlobalContext } from '../../Context/Index';
+import { useCartContext } from '../../Context/Index';
 import { Item } from '../../types';
 
 function ProductToCart({
@@ -14,7 +14,7 @@ function ProductToCart({
 	const [cantParcial, setCantParcial] = useState(initial);
 	const [open, setOpen] = useState(false);
 
-	const { addItemProp } = useGlobalContext();
+	const { addItemProp } = useCartContext();
 
 	function adding() {
 		if (cantParcial < producto.stock) {
