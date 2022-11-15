@@ -10,14 +10,14 @@ interface LayoutProps {
 
 export default function UserLayout({ children }: LayoutProps) {
 	return (
-		// <AuthGuardClient>
-		<div>
-			<Navbar />
-			<div className="flex">
-				<VerticalBarUser />
-				<div className="w-full px-16 mt-8">{children}</div>
+		<AuthGuardClient>
+			<div>
+				<Navbar />
+				<div className="flex">
+					<VerticalBarUser />
+					<div className="w-full px-16 mt-8">{children}</div>
+				</div>
 			</div>
-		</div>
-		// </AuthGuardClient>
+		</AuthGuardClient>
 	);
 }

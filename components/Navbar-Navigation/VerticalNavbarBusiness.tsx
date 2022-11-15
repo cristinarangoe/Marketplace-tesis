@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import React from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
-import { useUserContext } from '../../Context/Index';
+// import { useUserContext } from '../../Context/Index';
 import { useRouter } from 'next/router';
+import { logout } from '../../signals/userSignal';
 
 function VerticalNavbarBusiness() {
 	const [open, setOpen] = React.useState(false);
-	const { logout } = useUserContext();
+	// const { logout } = useUserContext();
 
 	const router = useRouter();
 	const { id } = router.query;

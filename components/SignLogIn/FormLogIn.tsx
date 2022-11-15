@@ -6,6 +6,7 @@ import { authUser } from '../../lib/auth';
 import { getBusinessInfo } from '../../lib/business';
 import { SupabaseAuthUser } from '../../types/user';
 import { setBusinessInfo } from '../../signals/businessSignal';
+import { setUserSession } from '../../signals/userSignal';
 
 type FormData = {
 	email: string;
@@ -13,7 +14,7 @@ type FormData = {
 };
 
 const FormLogIn = () => {
-	const { saveSession } = useUserContext();
+	// const { saveSession } = useUserContext();
 	const router = useRouter();
 	const {
 		register,
@@ -31,13 +32,19 @@ const FormLogIn = () => {
 					userType: 'client' | 'business';
 				},
 			};
-			saveSession(userSession);
+			// saveSession(userSession);
 			if (user.user.user_metadata.userType == 'business') {
 				const businessInfo = await getBusinessInfo(user.user.email!);
 				setBusinessInfo(businessInfo);
+				const tmp = {
+					...userSession,
+					businessInfo,
+				};
+				setUserSession(tmp);
 				router.push(`/business/${businessInfo.businessName}`);
 			}
 			if (user.user.user_metadata.userType == 'client') {
+				setUserSession(userSession);
 				router.push('/');
 			}
 		} catch (e) {

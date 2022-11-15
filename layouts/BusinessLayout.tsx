@@ -12,16 +12,16 @@ export default function BusinessLayout({ children }: LayoutProps) {
 	const { id } = router.query;
 
 	return (
-		// <AuthGuardBusiness>
-		<div>
-			<NavbarBusiness businessName={id as string} />
-			<div className="flex">
-				<VerticalNavbarBusiness />
-				<div className="mx-8 mt-5 w-full">
-					<div className="mb-2">{children}</div>
+		<AuthGuardBusiness>
+			<div>
+				<NavbarBusiness businessName={id as string} />
+				<div className="flex">
+					<VerticalNavbarBusiness />
+					<div className="mx-8 mt-5 w-full">
+						<div className="mb-2">{children}</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		// </AuthGuardBusiness>
+		</AuthGuardBusiness>
 	);
 }

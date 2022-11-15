@@ -5,12 +5,10 @@ import DialogClientBusiness from './DialogClientBusiness';
 import { useUserContext } from '../../Context/Index';
 import CategoriesNavigationMenu from './CategoriesNavigationMenu';
 import { CartPlaceholder } from './CartPlaceholder';
+import { userSignal } from '../../signals/userSignal';
 
 const Navbar = () => {
-	const { userStore, isAuthenticated } = useUserContext();
-
-	const user = userStore;
-	console.log(user);
+	// const { userStore, isAuthenticated } = useUserContext();
 
 	return (
 		<div className="z-10">
@@ -35,7 +33,7 @@ const Navbar = () => {
 				</div>
 				<div className="flex flex-row absolute right-0 mr-5">
 					<ul className="flex flex-row items-center">
-						{isAuthenticated ? (
+						{userSignal.value ? (
 							<>
 								<li className="mr-5">
 									<Link href="/marketplace/user/test/profile">

@@ -1,4 +1,4 @@
-import { signal } from '@preact/signals-react';
+import { effect, signal } from '@preact/signals-react';
 import { BusinessInfo } from '../types/business';
 
 export const businessInfo = signal<BusinessInfo | undefined>(undefined);

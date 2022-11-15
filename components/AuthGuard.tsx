@@ -6,6 +6,7 @@ import React, {
 	useEffect,
 } from 'react';
 import { useUserContext } from '../Context/Index';
+import { userSignal } from '../signals/userSignal';
 
 interface AuthGuardProps {
 	children: ReactElement;
@@ -13,18 +14,18 @@ interface AuthGuardProps {
 
 export const AuthGuardClient = ({ children }: AuthGuardProps) => {
 	const router = useRouter();
-	const { isAuthenticated, userStore } = useUserContext();
+	// const { isAuthenticated, userStore } = useUserContext();
 
-	const userAuthType = userStore?.user_metadata.userType;
+	// const userAuthType = userStore?.user_metadata.userType;
 
 	useEffect(() => {
-		if (!isAuthenticated) {
+		if (!userSignal.value) {
 			router.push('/');
 		}
 
 		if (
 			router.asPath.includes('client') &&
-			userStore?.user_metadata.userType != 'client'
+			userSignal.value?.user_metadata.userType != 'client'
 		) {
 			router.push('/');
 		}
@@ -35,17 +36,14 @@ export const AuthGuardClient = ({ children }: AuthGuardProps) => {
 
 export const AuthGuardBusiness = ({ children }: AuthGuardProps) => {
 	const router = useRouter();
-	const { isAuthenticated, userStore } = useUserContext();
-
-	const userAuthType = userStore?.user_metadata.userType;
 
 	useEffect(() => {
-		if (!isAuthenticated) {
+		if (!userSignal) {
 			router.push('/');
 		}
 		if (
 			router.asPath.includes('business') &&
-			userStore?.user_metadata.userType != 'business'
+			userSignal.value?.user_metadata.userType != 'business'
 		) {
 			router.push('/');
 		}

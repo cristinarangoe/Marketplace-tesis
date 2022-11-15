@@ -18,10 +18,10 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 	const getLayout = Component.getLayout ?? ((page) => page);
 
 	return (
-		<ContextUser>
-			<ContextProductsCart>
-				{getLayout(<Component {...pageProps} />)}
-			</ContextProductsCart>
-		</ContextUser>
+		// <ContextUser>
+		<ContextProductsCart>
+			{getLayout(<Component {...pageProps} />)}
+		</ContextProductsCart>
+		// </ContextUser>
 	);
 }
