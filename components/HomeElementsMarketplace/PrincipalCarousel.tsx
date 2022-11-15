@@ -5,30 +5,30 @@ import CircleNavigation from "./CircleNavigation";
 function PrincipalCarousel() {
     let carouselItem: Object[] = [
         {
-          image: "/Logo.png",
-          heading1: "Compra ropa lista para tu casa",
-          heading2: "ropa super lida para que te pongas todos los dias en la u",
+          image: "/moda.jpg",
+          heading1: "Moda",
+          heading2: "Ropa elaborada en Colombia, para que luzcas tus mejores looks y estés siempre a la moda",
         },
         {
-          image: "/Logo.png",
-          heading1: "Compra comida lista para tu casa",
+          image: "/Alimentos.png",
+          heading1: "Alimentos",
           heading2:
-            "Estara hecho para que disfrutes en casa siempre y siempre, calientala y listo",
+            "Las mejores opciones de alimentos, para que tengas opciones favorables y deliciosas",
         },
         {
-          image: "/Logo.png",
-          heading1: "Compra zapatos lista para tu casa",
-          heading2: "zapatos que son demasiado comodos como la nube",
+          image: "/Hogar.webp",
+          heading1: "Hogar",
+          heading2: "Productos para que decores tu casa al mejor estilo ",
         },
         {
-          image: "/Logo.png",
-          heading1: "Compra productos para mascotas lista para tu casa",
+          image: "/Mascotas.jpg",
+          heading1: "Productos para mascotas",
           heading2:
-            "los mejores productos para tu mascota, para que los alimentes y los pongas lindos",
+            "Los mejores productos para tu mejor compañia, para que los pongas super lindos",
         },
       ];
   return (
-    <div className="bg-cyan-400 h-auto py-5 flex">
+    <div className="h-auto py-5 flex border shadow-lg">
       <div className="ml-5 my-auto">
         <CircleNavigation href="#item0" />
         <CircleNavigation href="#item1" />

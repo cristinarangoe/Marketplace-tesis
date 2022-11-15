@@ -15,8 +15,8 @@ function ProductDetail() {
 			id: '001',
 			nombre: 'Plato mexicano',
 			precio: 12000,
-			descripcion: 'plato con deliciosos ingredientes',
-			imagen: '/Logo.png',
+			descripcion: "Plato mexicano realizado con los mejores ingredientes. En el podrás encontrar 8 tipos de ingredientes, que al juntarlos, encontrarás la mejor combinación de sabores",
+			imagen: '/platoMexicano.png',
 			categoria: 'Mexicano',
 			stock: 5,
 		},
@@ -104,13 +104,13 @@ function ProductDetail() {
 		<div>
 			<Navbar />
 			<div key={producto.id} className="flex flex-row mx-16 mt-8">
-				<div className="basis-1/2 grid justify-items-center ">
-					<img
+				<div className="basis-1/2 grid justify-items-center relative h-[30rem] w-auto">
+					<Image
 						className="w-3/4"
 						src={producto.imagen}
 						alt={producto.nombre}
-						height={100}
-						width={100}
+						layout='fill'
+						objectFit="contain"
 					/>
 				</div>
 				<div className="basis-1/2 mx-10">
