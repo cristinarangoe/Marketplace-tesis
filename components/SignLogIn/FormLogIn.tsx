@@ -1,12 +1,9 @@
 import Router, { useRouter } from 'next/router';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useUserContext } from '../../Context/Index';
 import { authUser } from '../../lib/auth';
-import { getBusinessInfo } from '../../lib/business';
-import { SupabaseAuthUser } from '../../types/user';
-import { setBusinessInfo } from '../../signals/businessSignal';
-import { setUserSession } from '../../signals/userSignal';
+import { BusinessUser, SupabaseAuthUser } from '../../types/user';
+import { setUserSession, userSignal } from '../../signals/userSignal';
 
 type FormData = {
 	email: string;
@@ -32,19 +29,16 @@ const FormLogIn = () => {
 					userType: 'client' | 'business';
 				},
 			};
-			// saveSession(userSession);
+
+			await setUserSession(userSession);
 			if (user.user.user_metadata.userType == 'business') {
-				const businessInfo = await getBusinessInfo(user.user.email!);
-				setBusinessInfo(businessInfo);
-				const tmp = {
-					...userSession,
-					businessInfo,
-				};
-				setUserSession(tmp);
-				router.push(`/business/${businessInfo.businessName}`);
+				router.push(
+					`/business/${
+						(userSignal.value as BusinessUser)?.businessInfo.businessName
+					}`
+				);
 			}
 			if (user.user.user_metadata.userType == 'client') {
-				setUserSession(userSession);
 				router.push('/');
 			}
 		} catch (e) {

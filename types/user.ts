@@ -1,3 +1,4 @@
+import { ClientInfo } from './client';
 import { BusinessInfo } from './business';
 
 export interface SupabaseAuthUser {
@@ -12,6 +13,7 @@ export interface ClientUser {
 	user_metadata: {
 		userType: 'client' | 'business';
 	};
+	clientInfo: ClientInfo;
 }
 
 export interface BusinessUser {
