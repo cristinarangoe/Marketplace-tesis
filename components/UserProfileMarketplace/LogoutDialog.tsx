@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { useUserContext } from '../../Context/Index';
 import { logout } from '../../signals/userSignal';
+import { useRouter } from 'next/router';
 
 export const LogoutDialog = () => {
 	const [open, setOpen] = useState(false);
+	const router = useRouter();
 	// const { logout } = useUserContext();
 	return (
 		<AlertDialog.Root open={open} onOpenChange={setOpen}>
@@ -47,7 +49,10 @@ export const LogoutDialog = () => {
 							<AlertDialog.Action>
 								<button
 									className="bg-red-500 text-white px-5 py-2 rounded-md border-2 border-red-500"
-									onClick={logout}
+									onClick={async () => {
+										await router.push('/');
+										logout();
+									}}
 								>
 									Si, cerrar sesión
 								</button>
