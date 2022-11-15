@@ -8,32 +8,33 @@ import { address } from '../../../../types';
 import { NextPageWithLayout } from '../../../_app';
 
 const UserAdresses: NextPageWithLayout = () => {
-	let addreses: address[] = [
-		{
-			state: 'Antioquia',
-			city: 'Medellín',
-			street: 'Calle 7 sur #23-03',
-			floor: 'apto 1304',
-			neighbourhood: 'El poblado',
-			nameRecipient: 'Cristina Arango Escobar',
-		},
-		{
-			state: 'Antioquia',
-			city: 'Medellín',
-			street: 'Calle 7 sur #23-03',
-			floor: 'apto 1304',
-			neighbourhood: 'El poblado',
-			nameRecipient: 'Cristina Arango Escobar',
-		},
-		{
-			state: 'Antioquia',
-			city: 'Medellín',
-			street: 'Calle 7 sur #23-03',
-			floor: 'apto 1304',
-			neighbourhood: 'El poblado',
-			nameRecipient: 'Cristina Arango Escobar',
-		},
-	];
+	// let addreses: address[] = [
+	// 	{
+	// 		state: 'Antioquia',
+	// 		city: 'Medellín',
+	// 		street: 'Calle 7 sur #23-03',
+	// 		floor: 'apto 1304',
+	// 		neighbourhood: 'El poblado',
+	// 		nameRecipient: 'Cristina Arango Escobar',
+	// 	},
+	// 	{
+	// 		state: 'Antioquia',
+	// 		city: 'Medellín',
+	// 		street: 'Calle 7 sur #23-03',
+	// 		floor: 'apto 1304',
+	// 		neighbourhood: 'El poblado',
+	// 		nameRecipient: 'Cristina Arango Escobar',
+	// 	},
+	// 	{
+	// 		state: 'Antioquia',
+	// 		city: 'Medellín',
+	// 		street: 'Calle 7 sur #23-03',
+	// 		floor: 'apto 1304',
+	// 		neighbourhood: 'El poblado',
+	// 		nameRecipient: 'Cristina Arango Escobar',
+	// 	},
+	// ];
+	const address: address[] = [];
 	return (
 		<>
 			<div className="flex flex-row justify-between items-center">
@@ -41,9 +42,13 @@ const UserAdresses: NextPageWithLayout = () => {
 				<DialogAddAddress />
 			</div>
 			<div className="grid grid-cols-3 gap-5 mt-5">
-				{addreses.map((address, index) => (
-					<AddressItem address={address} key={index} />
-				))}
+				{address.length > 0 ? (
+					address.map((address, index) => (
+						<AddressItem address={address} key={index} />
+					))
+				) : (
+					<p>no ha definido su direccion</p>
+				)}
 			</div>
 		</>
 	);

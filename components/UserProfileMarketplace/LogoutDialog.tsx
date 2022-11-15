@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { useUserContext } from '../../Context/Index';
+import { logout } from '../../signals/userSignal';
 
 export const LogoutDialog = () => {
 	const [open, setOpen] = useState(false);
-	const { logout } = useUserContext();
+	// const { logout } = useUserContext();
 	return (
 		<AlertDialog.Root open={open} onOpenChange={setOpen}>
 			<AlertDialog.Trigger>

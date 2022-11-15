@@ -1,11 +1,10 @@
 import Router, { useRouter } from 'next/router';
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useUserContext } from '../../Context/Index';
 import { authUser } from '../../lib/auth';
-import { getBusinessInfo } from '../../lib/business';
 import { SupabaseAuthUser } from '../../types/user';
-import { setBusinessInfo } from '../../signals/businessSignal';
+import { setUserSession, userSignal } from '../../signals/userSignal';
+import { BusinessInfo } from '../../types/business';
 
 type FormData = {
 	email: string;
@@ -13,7 +12,7 @@ type FormData = {
 };
 
 const FormLogIn = () => {
-	const { saveSession } = useUserContext();
+	// const { saveSession } = useUserContext();
 	const router = useRouter();
 	const {
 		register,
@@ -31,11 +30,12 @@ const FormLogIn = () => {
 					userType: 'client' | 'business';
 				},
 			};
-			saveSession(userSession);
+
+			await setUserSession(userSession);
 			if (user.user.user_metadata.userType == 'business') {
-				const businessInfo = await getBusinessInfo(user.user.email!);
-				setBusinessInfo(businessInfo);
-				router.push(`/business/${businessInfo.businessName}`);
+				router.push(
+					`/business/${(userSignal.value?.data as BusinessInfo).businessName}`
+				);
 			}
 			if (user.user.user_metadata.userType == 'client') {
 				router.push('/');

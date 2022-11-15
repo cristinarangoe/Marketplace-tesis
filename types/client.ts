@@ -1,4 +1,4 @@
-export interface BusinessInfo {
+export interface ClientInfo {
 	_id: string;
 	firstName: string;
 	secondName?: string;
@@ -8,6 +8,4 @@ export interface BusinessInfo {
 	email: string;
 	IDType: string;
 	ID: string;
-	businessType: string;
-	businessName: string;
 }
