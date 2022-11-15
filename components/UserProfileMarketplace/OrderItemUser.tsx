@@ -9,12 +9,12 @@ function OrderItemUser({ order }: { order: Order }) {
 	return (
 		<div className="flex flex-row items-center border-b-2 border-b-gray-100 py-3">
 			<div className="basis-1/4">
-				<Link href={`/marketplace/user/${$userId}/orders/${order.id}`}>
-					<h3 className="underline underline-offset-2 ">{order.id}</h3>
+				<Link href={`/marketplace/user/${$userId}/orders/${order._id}`}>
+					<h3 className="underline underline-offset-2 ">{order._id}</h3>
 				</Link>
 			</div>
 			<div className="basis-1/4 pr-2">
-				<h3>{order.date.toISOString()}</h3>
+				{/* <h3>{order.date.toISOString()}</h3> */}
 			</div>
 			<div className="basis-1/4">
 				{`${order.business}` !== undefined ? (

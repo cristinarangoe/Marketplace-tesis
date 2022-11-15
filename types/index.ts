@@ -21,11 +21,11 @@ export interface ItemInCart {
 }
 
 export interface Order {
-	id: string;
+	_id: string;
 	totalPrice: number;
 	status: string;
 	date: Date;
-	shipping: number;
+	address: Address;
 	client: Client;
 	products?: ProductInOrder[];
 	business?: businessInOrder;
