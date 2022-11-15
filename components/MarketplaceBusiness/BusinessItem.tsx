@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { URL_IMAGES } from "../../lib/utils";
 
 function BusinessItem({ business }: { business: any }) {
   return (
@@ -10,15 +11,16 @@ function BusinessItem({ business }: { business: any }) {
           <div className="">
             <Image
             className="mx-5"
-              src={business.img}
-              alt={business.nombre}
+              // src={business.img}
+              src={`${URL_IMAGES}/Hidia.png`}
+              alt={business.businessName}
               layout="fill"
               objectFit="contain"
             />
           </div>
         </div>
         <h2 className="text-center text-xl font-bold text-medium-violet mt-2">
-          {business.name}
+          {business.businessName}
         </h2>
       </div>
     </Link>

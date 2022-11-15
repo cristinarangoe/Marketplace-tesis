@@ -9,6 +9,8 @@ function Cart() {
 	const { productsCartProp, clearProp, totalCostProp } = useCartContext();
 	const [open, setOpen] = React.useState(false);
 
+	console.log(productsCartProp)
+
 	if (productsCartProp.length === 0)
 		return (
 			<div>
@@ -23,7 +25,7 @@ function Cart() {
 					<button className="bg-medium-violet text-tiffany-green py-2 px-5 rounded-lg text-xl font-semibold mt-5">
 						<Link
 							href="/marketplace/ProductsContainer"
-							className="bg-hidia-blue p-2 rounded text-white mx-5 my-3 w-6/12"
+							className=" p-2 rounded text-white mx-5 my-3 w-6/12"
 						>
 							Empezar a comprar
 						</Link>
@@ -88,7 +90,7 @@ function Cart() {
 						</div>
 						<div className="flex flex-col items-center mx-5 w-full">
 							<button className="bg-tiffany-green px-2 py-3 rounded-md font-semibold text-white my-3 w-4/5">
-								<Link href="/Marketplace/Checkout">
+								<Link href="/marketplace/Checkout">
 									Continuar con la compra
 								</Link>
 							</button>

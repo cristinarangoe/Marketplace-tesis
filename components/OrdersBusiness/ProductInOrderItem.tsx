@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import { ProductInOrder } from "../../types";
+import { ItemInCart } from "../../types";
 
 //this is the product that is in the specific order page, each of the products that is in the client's order
-function ProductInOrderItem({ prod }: {prod : ProductInOrder}) {
+function ProductInOrderItem({ prod }: {prod : ItemInCart}) {
   return (
     <div className="flex flex-row py-5 border-b-2 border-b-gray-300">
       <div className="basis-2/5 mx-auto flex flex-row">
@@ -12,7 +12,7 @@ function ProductInOrderItem({ prod }: {prod : ProductInOrder}) {
         </div>
         <div className="basis-1/2">
             <h4>{prod.name}</h4>
-            <h4>ID: {prod.id}</h4>
+            <h4>ID: {prod._id}</h4>
         </div>
       </div>
       <div className="basis-1/5 mx-auto">

@@ -1,34 +1,46 @@
 export interface Item {
-	id: string;
-	nombre: string;
-	precio: number;
-	descripcion: string;
-	imagen: string;
-	categoria: string;
-	stock: number;
+	_id: string;
+	name: string;
+	price: number;
+	description: string;
+	image: string;
+	businessType: string;
+	characteristics: characteristics[];
+	idBusiness: string,
 }
 
-export interface ItemInCart {
-	id: string;
-	nombre: string;
-	precio: number;
-	descripcion: string;
-	imagen: string;
-	categoria: string;
-	stock: number;
-	cantidad: number;
-	total: number;
+export interface characteristics{
+	type: string,
+	value: string,
 }
+
+// export interface Order {
+// 	_id: string;
+// 	totalPrice: number;
+// 	status: string;
+// 	date: Date;
+// 	address: Address;
+// 	client: Client;
+// 	products?: ProductInOrder[];
+// 	business?: businessInOrder;
+// }
 
 export interface Order {
-	_id: string;
-	totalPrice: number;
-	status: string;
-	date: Date;
-	address: Address;
-	client: Client;
-	products?: ProductInOrder[];
-	business?: businessInOrder;
+    client : Client,
+    address : Address,
+    paymentMethod: string,
+    products: ItemInCart[],
+    totalPrice: number,
+	idUser: string,
+}
+export interface OrderDB {
+	_id: string,
+    client : Client,
+    address : Address,
+    paymentMethod: string,
+    products: ItemInCart[],
+    totalPrice: number,
+	idUser: string,
 }
 
 export interface businessInOrder {
@@ -37,19 +49,24 @@ export interface businessInOrder {
 }
 
 export interface Client {
-	name: string;
-	phone: string;
-	email: string;
-	shippingAdress: Address;
-	id: string;
+    name: string,
+    email: string,
+    idType: string,
+    id: string,
+    phone: number
+	_id: string,
 }
 
-export interface ProductInOrder {
-	id: string;
+
+export interface ItemInCart {
+	_id: string;
 	name: string;
-	image: string;
 	price: number;
+	description: string;
+	image: string;
 	quantity: number;
+	total: number;
+	idBusiness: string;
 }
 
 export interface ClientSchema {
@@ -78,6 +95,20 @@ export interface EntrepreneurSchema {
 	businessName: string;
 	password: string;
 	confirmPassword: string;
+}
+
+export interface BusinessInMarketplace{
+	_id: string,
+	firstName: string;
+	secondName?: string;
+	firstLastName: string;
+	secondLastName?: string;
+	phone: number;
+	email: string;
+	IDType: string;
+	ID: string;
+	businessType: string;
+	businessName: string;
 }
 
 export interface Address {

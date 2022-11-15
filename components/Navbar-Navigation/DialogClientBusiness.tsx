@@ -3,6 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import Link from "next/link";
 import Image from "next/image";
 import AlreadyAnAccount from "../SignLogIn/AlreadyAnAccount";
+import { URL_IMAGES } from "../../lib/utils";
 
 const DialogClientBusiness = () => {
   return (
@@ -23,7 +24,7 @@ const DialogClientBusiness = () => {
                 </h2>
               </div>
               <div className="basis-1/2 relative h-[10rem] w-fit px-5">
-                <Image src="/Illustration.png" alt="ecommerce" layout="fill" objectFit='contain' />
+                <Image src={`${URL_IMAGES}/Illustration.png`} alt="ecommerce" layout="fill" objectFit='contain' />
               </div>
             </div>
             <div className="text-white bg-white h-1/2 flex flex-col  ">

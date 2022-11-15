@@ -24,11 +24,6 @@ const Navbar = () => {
 				</div>
 				<div className="flex flex-row ml-5">
 					<ul className="flex flex-row ">
-						<li className="mr-5 text-black text-xl font-medium hover:underline hover:decoration-medium-violet hover:underline-offset-4 hover:decoration-2">
-							<Link href="/marketplace/ProductsContainer">
-								<p className="">Productos</p>
-							</Link>
-						</li>
 						<li className="mr-5 text-black text-xl font-medium  z-20 hover:underline hover:decoration-medium-violet hover:underline-offset-4 hover:decoration-2">
 							<CategoriesNavigationMenu />
 						</li>

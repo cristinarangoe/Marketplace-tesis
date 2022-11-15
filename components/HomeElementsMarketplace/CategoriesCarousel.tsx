@@ -1,4 +1,5 @@
 import React from "react";
+import { URL_IMAGES } from "../../lib/utils";
 import CategorieItem from "./CategorieItem";
 
 function CategoriesCarousel() {
@@ -14,31 +15,31 @@ function CategoriesCarousel() {
   let categories: Object[] = [
     {
       name: "Alimentos",
-      image: "/platoMexicano.png",
+      image: `${URL_IMAGES}/platoMexicano.png`,
     },
     {
       name: "Moda",
-      image: "/shirt.jpg",
+      image: `${URL_IMAGES}/shirt.jpg`,
     },
     {
       name: "Productos para mascotas",
-      image: "/BorderCollie.webp",
+      image: `${URL_IMAGES}/BorderCollie.webp`,
     },
     {
       name: "Hogar",
-      image: "/House.webp",
+      image: `${URL_IMAGES}/House.webp`,
     },
     {
       name: "Variedades/regalos",
-      image: "/Agenda.webp",
+      image: `${URL_IMAGES}/Agenda.webp`,
     },
     {
       name: "Zapatos",
-      image: "/shoes.jpg",
+      image: `${URL_IMAGES}/shoes.jpg`,
     },
     {
       name: "Artículos de belleza",
-      image: "/beauty.jpg",
+      image: `${URL_IMAGES}/beauty.jpg`,
     },
   ];
   return (
