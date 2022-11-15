@@ -14,16 +14,16 @@ const CartItem: React.FC<ProductProps> = ({ producto }) => {
 	const [open, setOpen] = useState(false);
 
 	function adding(producto: ItemInCart) {
-		if (producto.cantidad < producto.stock) {
+		// if (producto.cantidad < producto.stock) {
 			addItemProp(producto, 1);
-		}
+		// }
 	}
 
 	function subs(producto: ItemInCart) {
-		if (producto.cantidad > 1) {
+		if (producto.quantity > 1) {
 			addItemProp(producto, -1);
-		} else if (producto.cantidad === 1) {
-			removeItemProp(producto.id);
+		} else if (producto.quantity === 1) {
+			removeItemProp(producto._id);
 		}
 	}
 
@@ -32,15 +32,15 @@ const CartItem: React.FC<ProductProps> = ({ producto }) => {
 			<div className="flex flex-row items-center basis-2/6">
 				<div className="basis-1/2 pr-5 relative h-[10rem] w-auto">
 					<Image
-						src={producto.imagen}
+						src={producto.image}
 						className="w-32 lg:w-40 lg:pr-2"
-						alt={producto.nombre}
+						alt={producto.name}
 						layout='fill'
 						objectFit="contain"
 					/>
 				</div>
 				<div className="basis-1/2">
-					<h2 className="text-xl">{producto.nombre}</h2>
+					<h2 className="text-xl">{producto.name}</h2>
 				</div>
 			</div>
 			<div className="flex justify-center basis-1/6">
@@ -48,11 +48,11 @@ const CartItem: React.FC<ProductProps> = ({ producto }) => {
 					product={producto}
 					onPressAdd={() => adding(producto)}
 					onPressSubs={() => subs(producto)}
-					cantidad={producto.cantidad}
+					cantidad={producto.quantity}
 				/>
 			</div>
 			<div className="flex justify-center basis-1/6">
-				<h2 className="text-lg">${producto.precio}</h2>
+				<h2 className="text-lg">${producto.price}</h2>
 			</div>
 			<div className="flex justify-center basis-1/6">
 				<h2 className="text-lg">${producto.total}</h2>
@@ -63,7 +63,7 @@ const CartItem: React.FC<ProductProps> = ({ producto }) => {
 						className=""
 						onClick={() => {
 							setOpen(false);
-							removeItemProp(producto.id);
+							removeItemProp(producto._id);
 							setOpen(true);
 						}}
 					>

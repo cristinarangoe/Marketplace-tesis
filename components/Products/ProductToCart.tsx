@@ -17,9 +17,9 @@ function ProductToCart({
 	const { addItemProp } = useCartContext();
 
 	function adding() {
-		if (cantParcial < producto.stock) {
+		// if (cantParcial < producto.stock) {
 			setCantParcial(cantParcial + 1);
-		}
+		// }
 	}
 	function subs() {
 		if (cantParcial > 1) {

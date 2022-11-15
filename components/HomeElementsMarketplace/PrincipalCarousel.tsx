@@ -1,27 +1,28 @@
 import React from "react";
+import { URL_IMAGES } from "../../lib/utils";
 import CarouselItem from "./CarouselItem";
 import CircleNavigation from "./CircleNavigation";
 
 function PrincipalCarousel() {
     let carouselItem: Object[] = [
         {
-          image: "/moda.jpg",
+          image: `${URL_IMAGES}/moda.jpg`,
           heading1: "Moda",
           heading2: "Ropa elaborada en Colombia, para que luzcas tus mejores looks y estés siempre a la moda",
         },
         {
-          image: "/Alimentos.png",
+          image: `${URL_IMAGES}/Alimentos.png`,
           heading1: "Alimentos",
           heading2:
             "Las mejores opciones de alimentos, para que tengas opciones favorables y deliciosas",
         },
         {
-          image: "/Hogar.webp",
+          image: `${URL_IMAGES}/Hogar.webp`,
           heading1: "Hogar",
           heading2: "Productos para que decores tu casa al mejor estilo ",
         },
         {
-          image: "/Mascotas.jpg",
+          image: `${URL_IMAGES}/Mascotas.jpg`,
           heading1: "Productos para mascotas",
           heading2:
             "Los mejores productos para tu mejor compañia, para que los pongas super lindos",

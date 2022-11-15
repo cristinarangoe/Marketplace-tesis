@@ -7,9 +7,10 @@ import useSWR from "swr";
 import {
   Client,
   businessInOrder,
-  ProductInOrder,
+  ItemInCart,
   Order,
   Address,
+  OrderDB,
 } from "../../../../../types";
 import { NextPageWithLayout } from "../../../../_app";
 import { CLIENT_URL } from "../../../../../lib/client";
@@ -98,7 +99,7 @@ const UserOrders: NextPageWithLayout = () => {
   // 		business,
   // 	},
   // ];
-  const { data, error } = useSWR<Order[], Error>(
+  const { data, error } = useSWR<OrderDB[], Error>(
     `${CLIENT_URL}/orders/${userSignal.value?.data._id}`,
     fetcher
   );
@@ -112,27 +113,22 @@ const UserOrders: NextPageWithLayout = () => {
 
   if (!data) return <p>loading</p>;
 
-  let orders: Order[] = data;
+  let orders: OrderDB[] = data;
   return (
     <>
       <div className="mb-2">
         <h1 className="text-3xl font-bold">Órdenes</h1>
       </div>
       <div className="flex flex-row items-center border-b-2 border-b-gray-100 mt-5 pb-2">
-        <div className="basis-1/4 mx-auto">
+        <div className="basis-1/3 mx-auto">
           <h3 className="text-lg font-medium text-medium-violet">
             Número de orden
           </h3>
         </div>
-        <div className="basis-1/4 mx-auto">
+        <div className="basis-1/3 mx-auto">
           <h3 className="text-lg font-medium text-medium-violet">Fecha</h3>
         </div>
-        <div className="basis-1/4">
-          <h3 className="text-lg font-medium text-medium-violet">
-            Emprendimiento
-          </h3>
-        </div>
-        <div className="basis-1/4">
+        <div className="basis-1/3">
           <h3 className="text-lg font-medium text-medium-violet">Total</h3>
         </div>
       </div>

@@ -8,26 +8,26 @@ import useSWR from 'swr';
 import { useRouter } from 'next/router';
 
 const CRUDProductBusiness: NextPageWithLayout = () => {
-	let products: Item[] = [
-		{
-			id: '001',
-			nombre: 'Plato mexicano ',
-			precio: 12000,
-			descripcion: 'plato con deliciosos ingredientes',
-			imagen: '/platoMexicano.png',
-			categoria: 'Mexicano',
-			stock: 5,
-		},
-		{
-			id: '002',
-			nombre: 'Nachos',
-			precio: 10000,
-			descripcion: 'plato con deliciosos ingredientes',
-			imagen: '/Logo.png',
-			categoria: 'Mexicano',
-			stock: 5,
-		},
-	];
+	// let products: Item[] = [
+	// 	{
+	// 		id: '001',
+	// 		nombre: 'Plato mexicano ',
+	// 		precio: 12000,
+	// 		descripcion: 'plato con deliciosos ingredientes',
+	// 		imagen: 'https://c90c277d9089aefac81645bdd3cfe3e2.r2.cloudflarestorage.com/marketplace-images/platoMexicano.png',
+	// 		categoria: 'Mexicano',
+	// 		stock: 5,
+	// 	},
+	// 	{
+	// 		id: '002',
+	// 		nombre: 'Nachos',
+	// 		precio: 10000,
+	// 		descripcion: 'plato con deliciosos ingredientes',
+	// 		imagen: '/Logo.png',
+	// 		categoria: 'Mexicano',
+	// 		stock: 5,
+	// 	},
+	// ];
 
 	const router = useRouter();
 	const { id } = router.query;

@@ -8,7 +8,6 @@ import Image from "next/image";
 //this is the product that is in the general product's page container
 const Product = ({ product }: { product: Item }) => {
   const { addItemProp } = useCartContext();
-  console.log(product._id);
   return (
     <div
       key={product._id}
