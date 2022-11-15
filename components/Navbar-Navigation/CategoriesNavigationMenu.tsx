@@ -8,7 +8,7 @@ function CategoriesNavigationMenu() {
   let categories: string[] = [
     "Moda",
     "Mascotas",
-    "Comida",
+    "Alimentos",
     "Hogar",
     "Variedades",
   ];
@@ -37,10 +37,9 @@ function CategoriesNavigationMenu() {
             className="pr-8 pl-3 py-0.5 outline-none hover:bg-medium-violet hover:text-white hover:rounded-md hover:ring-inset"
             key={index}
           >
-            {cat}
+            <Link href={`/marketplace/ProductContainer/${cat}`}>{cat}</Link>
           </DropdownMenu.Item>
         ))}
-
         <DropdownMenu.Arrow className="fill-medium-violet" />
       </DropdownMenu.Content>
     </DropdownMenu.Root>

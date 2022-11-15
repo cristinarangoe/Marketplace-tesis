@@ -1,11 +1,16 @@
 export interface Item {
-	id: string;
-	nombre: string;
-	precio: number;
-	descripcion: string;
-	imagen: string;
-	categoria: string;
-	stock: number;
+	_id: string;
+	name: string;
+	price: number;
+	description: string;
+	image: string;
+	businessType: string;
+	characteristics: characteristics[];
+}
+
+export interface characteristics{
+	type: string,
+	value: string,
 }
 
 export interface ItemInCart {
