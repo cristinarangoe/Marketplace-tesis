@@ -7,12 +7,12 @@ function BusinessItem({ business }: { business: any }) {
   return (
     <Link href="/">
       <div>
-        <div className="hover:shadow-lg border border-gray-100 rounded-full bg-gray-100 items-center block relative w-[15rem] h-[15rem] px-36">
+        <div className="hover:shadow-lg border  rounded-full items-center block relative w-[15rem] h-[15rem] px-36">
           <div className="">
             <Image
             className="mx-5"
               // src={business.img}
-              src={`${URL_IMAGES}/Hidia.png`}
+              src={business.logo}
               alt={business.businessName}
               layout="fill"
               objectFit="contain"
