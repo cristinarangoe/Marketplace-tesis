@@ -1,7 +1,5 @@
 import React, { ReactElement } from 'react';
-import Navbar from '../../../../../components/Navbar-Navigation/Navbar';
 import OrderItemUser from '../../../../../components/UserProfileMarketplace/OrderItemUser';
-import VerticalBarUser from '../../../../../components/UserProfileMarketplace/VerticalBarUser';
 import UserLayout from '../../../../../layouts/UserLayout';
 import useSWR from 'swr';
 import { OrderDB } from '../../../../../types';

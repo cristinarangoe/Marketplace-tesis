@@ -1,10 +1,8 @@
 import React, { ReactElement } from 'react';
 import useSWR from 'swr';
 import Loading from '../../../../components/Navbar-Navigation/Loading';
-import Navbar from '../../../../components/Navbar-Navigation/Navbar';
 import AddressItem from '../../../../components/UserProfileMarketplace/AddressItem';
 import DialogAddAddress from '../../../../components/UserProfileMarketplace/DialogAddAddress';
-import VerticalBarUser from '../../../../components/UserProfileMarketplace/VerticalBarUser';
 import UserLayout from '../../../../layouts/UserLayout';
 import { CLIENT_URL } from '../../../../lib/client';
 import fetcher from '../../../../lib/utils';

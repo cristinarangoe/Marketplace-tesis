@@ -31,7 +31,7 @@ function CategorieItem({ cat }: any) {
 				</div>
 
 				<h3 className="text-2xl my-4 text-center">
-					<Link href="/Marketplace/ProductDetail">{cat.name}</Link>
+					<Link href="/marketplace/ProductDetail">{cat.name}</Link>
 				</h3>
 			</div>
 		</div>
