@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { SWRConfig } from 'swr';
+import { deleteProduct } from '../../lib/business/products';
 import { Item } from '../../types';
 
 //This is the product that is in the business CRUD Page, each of the products that the business has
@@ -51,7 +53,13 @@ const ProductItem = ({ producto }: { producto: Item }) => {
 						</svg>
 					</Link>
 				</div>
-				<div className="basis-1/2">
+				<div
+					className="basis-1/2"
+					onClick={async () => {
+						const data = await deleteProduct(producto._id);
+						console.log(data);
+					}}
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

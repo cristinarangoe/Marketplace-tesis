@@ -18,7 +18,6 @@ export const ProducstList = () => {
 
 	const products: Item[] = data as Item[];
 
-	console.log(data);
 	return (
 		<div>
 			{products.map((product, key) => (

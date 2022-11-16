@@ -51,4 +51,16 @@ export async function updateProduct(
 	}
 }
 
-export async function deleteProduct(productId: string) {}
+export async function deleteProduct(productId: string) {
+	try {
+		const res = await fetch(`${URL_BUSINESS}/product/delete`, {
+			method: 'DELETE',
+			body: JSON.stringify({
+				productId: productId,
+			}),
+		});
+		return res;
+	} catch (e) {
+		console.log(e);
+	}
+}
