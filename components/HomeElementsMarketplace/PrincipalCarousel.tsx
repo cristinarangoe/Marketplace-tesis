@@ -31,12 +31,20 @@ function PrincipalCarousel() {
 	];
 	return (
 		<div className="h-auto py-5 flex border shadow-lg">
-			<div className="ml-5 my-auto">
-				<CircleNavigation href="#item0" />
-				<CircleNavigation href="#item1" />
-				<CircleNavigation href="#item2" />
-				<CircleNavigation href="#item3" />
-			</div>
+			<ul className="ml-5 my-auto flex flex-col">
+				<li>
+					<CircleNavigation href="#item0" />
+				</li>
+				<li>
+					<CircleNavigation href="#item1" />
+				</li>
+				<li>
+					<CircleNavigation href="#item2" />
+				</li>
+				<li>
+					<CircleNavigation href="#item3" />
+				</li>
+			</ul>
 			<div className="carousel w-full mx-5">
 				{carouselItem.map((item, index) => (
 					<CarouselItem item={item} id={index} key={index} />

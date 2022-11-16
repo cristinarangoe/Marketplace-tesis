@@ -25,13 +25,14 @@ function DialogAddAddress() {
 		const res = await saveAddress({
 			idUser: userSignal.value!.data._id,
 			...data,
+			_id: '',
 		});
 		window.location.reload();
 	});
 	return (
 		<Dialog.Root>
 			<Dialog.Trigger className="font-semibold bg-medium-violet text-white py-3 px-6 rounded-lg">
-					Añadir dirección
+				Añadir dirección
 			</Dialog.Trigger>
 			<Dialog.Portal className="relative">
 				<Dialog.Portal className="bg-[hsla(0, 0%, 0%, 0.439)] bg-fixed inset-0">

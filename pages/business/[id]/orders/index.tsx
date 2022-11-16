@@ -4,12 +4,10 @@ import Loading from '../../../../components/Navbar-Navigation/Loading';
 import OrderItem from '../../../../components/OrdersBusiness/OrderItem';
 import BusinessLayout from '../../../../layouts/BusinessLayout';
 import { URL_BUSINESS } from '../../../../lib/business/products';
-import { CLIENT_URL } from '../../../../lib/client';
 import fetcher from '../../../../lib/utils';
 import { userSignal } from '../../../../signals/userSignal';
-import { Address, Client, ItemInCart, Order, OrderDB } from '../../../../types';
+import { OrderDB } from '../../../../types';
 import { OrderBussinessDB } from '../../../../types/business';
-import { ClientInfo } from '../../../../types/client';
 import { NextPageWithLayout } from '../../../_app';
 
 const OrdersViewPage: NextPageWithLayout = () => {

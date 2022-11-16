@@ -1,19 +1,24 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { LogoutDialog } from './LogoutDialog';
 import { useRouter } from 'next/router';
 import { $userId, userSignal } from '../../signals/userSignal';
+import { User } from '../../types/user';
 
 function VerticalBarUser() {
 	const router = useRouter();
+	const [user, setUser] = useState<User | undefined>();
+	useEffect(() => {
+		setUser(userSignal.value);
+	}, []);
 
 	const actualRoute = (s: string) => router.asPath.includes(s);
 	const actualRouteStyle = 'border-r-4 border-r-tiffany-green';
 
 	return (
 		<div className=" h-screen w-1/5 flex flex-col pt-5 border-r-2 border-r-gray-200 pl-20 ">
-			<h1 className="text-2xl font-semibold mt-5">{`Hola, ${userSignal.value?.data.firstName}!`}</h1>
+			<h1 className="text-2xl font-semibold mt-5">{`Hola, ${user?.data.firstName}!`}</h1>
 			<div className="mt-8 w-full">
 				<Link href={`/marketplace/user/${$userId}/profile`}>
 					<div

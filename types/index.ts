@@ -6,12 +6,12 @@ export interface Item {
 	image: string;
 	businessType: string;
 	characteristics: characteristics[];
-	idBusiness: string,
+	idBusiness: string;
 }
 
-export interface characteristics{
-	type: string,
-	value: string,
+export interface characteristics {
+	type: string;
+	value: string;
 }
 
 // export interface Order {
@@ -26,21 +26,21 @@ export interface characteristics{
 // }
 
 export interface Order {
-    client : Client,
-    address : Address,
-    paymentMethod: string,
-    products: ItemInCart[],
-    totalPrice: number,
-	idUser: string,
+	client: Client;
+	address: Address;
+	paymentMethod: string;
+	products: ItemInCart[];
+	totalPrice: number;
+	idUser: string;
 }
 export interface OrderDB {
-	_id: string,
-    client : Client,
-    address : Address,
-    paymentMethod: string,
-    products: ItemInCart[],
-    totalPrice: number,
-	idUser: string,
+	_id: string;
+	client: Client;
+	address: Address;
+	paymentMethod: string;
+	products: ItemInCart[];
+	totalPrice: number;
+	idUser: string;
 }
 
 export interface businessInOrder {
@@ -49,14 +49,13 @@ export interface businessInOrder {
 }
 
 export interface Client {
-    name: string,
-    email: string,
-    idType: string,
-    id: string,
-    phone: number
-	_id: string,
+	name: string;
+	email: string;
+	idType: string;
+	id: string;
+	phone: number;
+	_id: string;
 }
-
 
 export interface ItemInCart {
 	_id: string;
@@ -97,8 +96,8 @@ export interface EntrepreneurSchema {
 	confirmPassword: string;
 }
 
-export interface BusinessInMarketplace{
-	_id: string,
+export interface BusinessInMarketplace {
+	_id: string;
 	firstName: string;
 	secondName?: string;
 	firstLastName: string;
@@ -112,7 +111,7 @@ export interface BusinessInMarketplace{
 }
 
 export interface Address {
-	_id: string;
+	_id?: string;
 	state: string;
 	city: string;
 	street: string;
@@ -128,5 +127,4 @@ export interface AddressDB {
 	floor: string;
 	neighbourhood: string;
 	nameRecipient: string;
-	
 }

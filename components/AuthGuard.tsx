@@ -4,9 +4,11 @@ import React, {
 	experimental_use as use,
 	Suspense,
 	useEffect,
+	useState,
 } from 'react';
 import { useUserContext } from '../Context/Index';
 import { userSignal } from '../signals/userSignal';
+import { User } from '../types/user';
 
 interface AuthGuardProps {
 	children: ReactElement;
@@ -14,11 +16,13 @@ interface AuthGuardProps {
 
 export const AuthGuardClient = ({ children }: AuthGuardProps) => {
 	const router = useRouter();
+	const [user, setUser] = useState<User | undefined>();
 	// const { isAuthenticated, userStore } = useUserContext();
 
 	// const userAuthType = userStore?.user_metadata.userType;
 
 	useEffect(() => {
+		setUser(userSignal.value);
 		if (!userSignal.value) {
 			router.push('/');
 		}
@@ -29,15 +33,17 @@ export const AuthGuardClient = ({ children }: AuthGuardProps) => {
 		) {
 			router.push('/');
 		}
-	}, [userSignal.value]);
+	}, []);
 
 	return <>{children}</>;
 };
 
 export const AuthGuardBusiness = ({ children }: AuthGuardProps) => {
 	const router = useRouter();
+	const [user, setUser] = useState<User | undefined>();
 
 	useEffect(() => {
+		setUser(userSignal.value);
 		if (!userSignal) {
 			router.push('/');
 		}
@@ -47,7 +53,7 @@ export const AuthGuardBusiness = ({ children }: AuthGuardProps) => {
 		) {
 			router.push('/');
 		}
-	}, [userSignal.value]);
+	}, []);
 
 	return <>{children}</>;
 };
