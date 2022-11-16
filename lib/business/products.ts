@@ -3,8 +3,9 @@ import { Item } from '../../types';
 import { DBProduct } from '../../types/products';
 
 const CREATE_PRODUCT_URL =
-	'https://createproductworker.cristinarangoe2584.workers.dev/business/createProduct';
-export const URL_BUSINESS = 'http://localhost:5173/business';
+	'https://createproductworker.cristinarangoe2584.workers.dev/business';
+export const URL_BUSINESS =
+	'https://readbusinessworker.cristinarangoe2584.workers.dev/business';
 
 export async function saveProducts(p: DBProduct[]) {
 	try {
@@ -15,7 +16,7 @@ export async function saveProducts(p: DBProduct[]) {
 		// 	formdata.append(`image_${i}`, image);
 		// });
 
-		const res = await fetch(`${URL_BUSINESS}/createProduct`, {
+		const res = await fetch(`${CREATE_PRODUCT_URL}/createProduct`, {
 			method: 'POST',
 			body: JSON.stringify(p),
 		});
