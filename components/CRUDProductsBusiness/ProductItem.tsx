@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
 import { Item } from '../../types';
 
 //This is the product that is in the business CRUD Page, each of the products that the business has
@@ -13,25 +12,25 @@ const ProductItem = ({ producto }: { producto: Item }) => {
 			<div className="relative basis-1/6 h-[6rem]">
 				<div className="h-max-[6rem] w-auto ">
 					<Image
-						src={producto.imagen}
-						alt={producto.nombre}
+						src={producto.image}
+						alt={producto.name}
 						layout="fill"
 						objectFit="contain"
 					/>
 				</div>
 			</div>
 			<div className="basis-2/6 px-5">
-				<h3>{producto.nombre}</h3>
+				<h3>{producto.name}</h3>
 			</div>
 			<div className="basis-1/6">
-				<h3>{producto.stock}</h3>
+				<h3>{0}</h3>
 			</div>
 			<div className="basis-1/6">
-				<h3>${producto.precio}</h3>
+				<h3>${producto.price}</h3>
 			</div>
 			<div className="flex flex-row basis-1/6">
 				<div className="basis-1/2">
-					<Link href={`/business/${id}/products/editProduct/${producto.id}`}>
+					<Link href={`/business/${id}/products/editProduct/${producto._id}`}>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"

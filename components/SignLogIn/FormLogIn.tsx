@@ -34,7 +34,7 @@ const FormLogIn = () => {
 			await setUserSession(userSession);
 			if (user.user.user_metadata.userType == 'business') {
 				router.push(
-					`/business/${(userSignal.value?.data as BusinessInfo).businessName}`
+					`/business/${(userSignal.value?.data as BusinessInfo)._id}`
 				);
 			}
 			if (user.user.user_metadata.userType == 'client') {

@@ -6,6 +6,8 @@ import { Item } from '../../../../types';
 import { NextPageWithLayout } from '../../../_app';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
+import fetcher from '../../../../lib/utils';
+import { URL_BUSINESS } from '../../../../lib/business/products';
 
 const CRUDProductBusiness: NextPageWithLayout = () => {
 	// let products: Item[] = [
@@ -32,7 +34,15 @@ const CRUDProductBusiness: NextPageWithLayout = () => {
 	const router = useRouter();
 	const { id } = router.query;
 
-	// const { data, error } = useSWR(`http://localhost:5173/business/findProductsBusiness/${id}`)
+	const { data, error } = useSWR(`${URL_BUSINESS}/${id}/products`, fetcher);
+
+	if (error) return <p>{JSON.stringify(error)}</p>;
+
+	if (!data) return <p>loading</p>;
+
+	const products: Item[] = data as Item[];
+
+	console.log(data);
 
 	return (
 		<>
