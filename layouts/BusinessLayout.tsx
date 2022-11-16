@@ -4,20 +4,17 @@ import NavbarBusiness from '../components/Navbar-Navigation/NavbarBusiness';
 import VerticalNavbarBusiness from '../components/Navbar-Navigation/VerticalNavbarBusiness';
 import { userSignal } from '../signals/userSignal';
 import { BusinessInfo } from '../types/business';
+import { User } from '../types/user';
 
 interface LayoutProps {
 	children: JSX.Element;
 }
 
 export default function BusinessLayout({ children }: LayoutProps) {
-	const [businessName, setBusiness] = useState<string>('NN');
-	useEffect(() => {
-		setBusiness((userSignal.value?.data as BusinessInfo).businessName);
-	}, []);
 	return (
 		<AuthGuardBusiness>
 			<div>
-				<NavbarBusiness businessName={businessName ?? ''} />
+				<NavbarBusiness />
 				<div className="flex">
 					<VerticalNavbarBusiness />
 					<div className="mx-8 mt-5 w-full">

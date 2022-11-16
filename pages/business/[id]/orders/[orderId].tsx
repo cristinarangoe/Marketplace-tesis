@@ -29,7 +29,6 @@ function SpecificOrderContainer() {
 		);
 
 	if (!data) return <Loading />;
-	console.log(data);
 
 	const order = data;
 

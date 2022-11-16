@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProductCount from './ProductCount';
 import * as Toast from '@radix-ui/react-toast';
 import { useCartContext } from '../../Context/Index';
-import { Item } from '../../types';
+import { Item, ItemInCart } from '../../types';
 
 function ProductToCart({
 	producto,
@@ -18,7 +18,7 @@ function ProductToCart({
 
 	function adding() {
 		// if (cantParcial < producto.stock) {
-			setCantParcial(cantParcial + 1);
+		setCantParcial(cantParcial + 1);
 		// }
 	}
 	function subs() {
@@ -32,7 +32,16 @@ function ProductToCart({
 			<div className="">
 				<p className="font-medium text-xl pb-2 text-tiffany-green">Cantidad:</p>
 				<ProductCount
-					product={producto}
+					product={{
+						_id: producto._id,
+						name: producto.name,
+						price: producto.price,
+						description: producto.description,
+						image: producto.image,
+						quantity: 1,
+						total: producto.price,
+						idBusiness: producto.idBusiness,
+					}}
 					onPressAdd={adding}
 					onPressSubs={subs}
 					cantidad={cantParcial}

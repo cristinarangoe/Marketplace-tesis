@@ -1,9 +1,5 @@
 import React, { ReactElement } from 'react';
-import NavbarBusiness from '../../../components/Navbar-Navigation/NavbarBusiness';
-import VerticalNavbarBusiness from '../../../components/Navbar-Navigation/VerticalNavbarBusiness';
-import OrderItem from '../../../components/OrdersBusiness/OrderItem';
 import BusinessLayout from '../../../layouts/BusinessLayout';
-import { address, Client, Order, ProductInOrder } from '../../../types';
 import { NextPageWithLayout } from '../../_app';
 
 const BusinessHome: NextPageWithLayout = () => {

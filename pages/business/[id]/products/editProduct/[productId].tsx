@@ -8,15 +8,6 @@ import fetcher from '../../../../../lib/utils';
 import { Item } from '../../../../../types';
 
 function EditProductContainer() {
-	// let producto: Item = {
-	// 	id: '001',
-	// 	nombre: 'Plato mexicano',
-	// 	precio: 12000,
-	// 	descripcion: 'plato con deliciosos ingredientes',
-	// 	imagen: '/public/Logo.png',
-	// 	categoria: 'Mexicano',
-	// 	stock: 100,
-	// };
 	const router = useRouter();
 
 	const { productId, id } = router.query;

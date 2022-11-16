@@ -4,8 +4,8 @@ export interface Item {
 	price: number;
 	description: string;
 	image: string;
-	businessType: string;
-	characteristics: characteristics[];
+	businessType?: string;
+	characteristics?: characteristics[];
 	idBusiness: string;
 }
 
