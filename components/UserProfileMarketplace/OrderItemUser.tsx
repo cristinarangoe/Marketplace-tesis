@@ -9,16 +9,13 @@ function OrderItemUser({ order }: { order: OrderDB }) {
 	
   return (
     <div className="flex flex-row items-center border-b-2 border-b-gray-100 py-3">
-      <div className="basis-1/3">
+      <div className="basis-1/2 cursor-pointer">
         <Link href={`/marketplace/user/${$userId}/orders/${order._id}`}>
           <h3 className="underline underline-offset-2 ">{order._id}</h3>
         </Link>
       </div>
-      <div className="basis-1/3 pr-2">
-        {/* <h3>{order._id.getTimestamp().toISOString()}</h3> */}
-      </div>
-      <div className="flex flex-row basis-1/3">
-        <h3>{order.totalPrice}</h3>
+      <div className="flex flex-row basis-1/2">
+        <h3>${order.totalPrice}</h3>
       </div>
     </div>
   );

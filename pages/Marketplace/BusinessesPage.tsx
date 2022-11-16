@@ -1,54 +1,15 @@
 import React from "react";
 import useSWR from "swr";
 import BusinessItem from "../../components/MarketplaceBusiness/BusinessItem";
+import Loading from "../../components/Navbar-Navigation/Loading";
 import Navbar from "../../components/Navbar-Navigation/Navbar";
 import { CLIENT_URL } from "../../lib/client";
 import fetcher from "../../lib/utils";
 import { BusinessInMarketplace, Item } from "../../types";
 
 function BusinessesPage() {
-  // let businesses = [
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  //   {
-  //     name: "Hi dia",
-  //     img: "/Hidia.png",
-  //   },
-  // ];
-
   const { data, error } = useSWR<BusinessInMarketplace[], Error>(
-    // `${CLIENT_URL}/business/`,
-    "http://localhost:5173/client/business",
+    `${CLIENT_URL}/business`,
     fetcher
   );
 
@@ -59,7 +20,10 @@ function BusinessesPage() {
       </div>
     );
 
-  if (!data) return <p>loading</p>;
+    if (!data)
+    return (
+      <Loading/>
+    );
 
   let businesses : BusinessInMarketplace[] = data; 
   console.log(data)

@@ -26,7 +26,7 @@ function DialogAddAddress() {
 			idUser: userSignal.value!.data._id,
 			...data,
 		});
-		console.log(res);
+		window.location.reload();
 	});
 	return (
 		<Dialog.Root>

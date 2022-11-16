@@ -16,6 +16,7 @@ import { NextPageWithLayout } from "../../../../_app";
 import { CLIENT_URL } from "../../../../../lib/client";
 import fetcher from "../../../../../lib/utils";
 import { userSignal } from "../../../../../signals/userSignal";
+import Loading from "../../../../../components/Navbar-Navigation/Loading";
 
 const UserOrders: NextPageWithLayout = () => {
   // let shippingAdress: Address = {
@@ -111,7 +112,7 @@ const UserOrders: NextPageWithLayout = () => {
       </div>
     );
 
-  if (!data) return <p>loading</p>;
+  if (!data) return <Loading/>;
 
   let orders: OrderDB[] = data;
   return (
@@ -120,15 +121,12 @@ const UserOrders: NextPageWithLayout = () => {
         <h1 className="text-3xl font-bold">Órdenes</h1>
       </div>
       <div className="flex flex-row items-center border-b-2 border-b-gray-100 mt-5 pb-2">
-        <div className="basis-1/3 mx-auto">
+        <div className="basis-1/2 mx-auto">
           <h3 className="text-lg font-medium text-medium-violet">
             Número de orden
           </h3>
         </div>
-        <div className="basis-1/3 mx-auto">
-          <h3 className="text-lg font-medium text-medium-violet">Fecha</h3>
-        </div>
-        <div className="basis-1/3">
+        <div className="basis-1/2">
           <h3 className="text-lg font-medium text-medium-violet">Total</h3>
         </div>
       </div>

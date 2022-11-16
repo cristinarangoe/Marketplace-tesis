@@ -14,7 +14,7 @@ const Navbar = () => {
 					<Link href="/">
 						<a>
 							<Image
-								src="/Logo.png"
+								src="/Logo.svg"
 								alt="logo"
 								layout="fill"
 								objectFit="contain"

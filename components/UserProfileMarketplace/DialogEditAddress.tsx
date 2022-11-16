@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useForm } from 'react-hook-form';
-import { address } from '../../types';
+import { Address } from '../../types';
 
 type FormData = {
 	state: string;
@@ -12,7 +12,7 @@ type FormData = {
 	nameRecipient: string;
 };
 
-function DialogEditAddress({ address }: { address: address }) {
+function DialogEditAddress({ address }: { address: Address }) {
 	const {
 		register,
 		setValue,
