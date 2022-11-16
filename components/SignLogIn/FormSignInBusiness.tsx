@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { registerClient, registerEntrepreneur } from '../../lib/auth';
 import { EntrepreneurSchema } from '../../types';
-import AlreadyAnAccount from './AlreadyAnAccount';
 
 type FormData = {
 	firstName: string;
@@ -58,26 +57,6 @@ const FormSignInBusiness = () => {
 				onSubmit={handleSubmit(onSubmit)}
 				className="flex flex-col justify-center mx-auto px-5 pb-5"
 			>
-				<div className="mt-4 flex flex-row justify-center min-h-[32px]">
-					{/* loading */}
-					{isLoading ? (
-						<div className="text-center  bg-white rounded-full px-6 py-1">
-							loading
-						</div>
-					) : null}
-					{/* error */}
-					{isError ? (
-						<div className="text-center  bg-white rounded-full px-6 py-1">
-							error
-						</div>
-					) : null}
-					{/* Success */}
-					{isSuccess ? (
-						<div className="text-center  bg-white rounded-full px-6 py-1">
-							success message
-						</div>
-					) : null}
-				</div>
 
 				<div className="flex flex-row mt-3">
 					<div className="flex flex-col w-1/2">
@@ -190,7 +169,26 @@ const FormSignInBusiness = () => {
 						/>
 					</div>
 				</div>
-
+				<div className="flex flex-row ">
+					{/* loading */}
+					{isLoading ? (
+						<div className="text-center  bg-white rounded-full px-6 py-1 text-blue-500">
+							Cargando información
+						</div>
+					) : <div className='hidden'></div>}
+					{/* error */}
+					{isError ? (
+						<div className="text-center  bg-white rounded-full px-6 py-1 text-red-500">
+							Hubo un error. Intenta de nuevo.
+						</div>
+					) : <div className='hidden'></div>}
+					{/* Success */}
+					{isSuccess ? (
+						<div className="text-center  bg-white rounded-full px-6 py-1 text-green-500">
+							Tu cuenta ha sido creada. Revisa tu correo para confirmar la cuenta.
+						</div>
+					) : <div className='hidden'></div>}
+				</div>
 				<input
 					type="submit"
 					value="Registrarse"

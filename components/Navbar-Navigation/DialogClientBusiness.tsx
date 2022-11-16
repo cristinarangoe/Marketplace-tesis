@@ -20,7 +20,7 @@ const DialogClientBusiness = () => {
               <div className="basis-1/2">
                 {" "}
                 <h2 className="text-2xl font-medium py-5">
-                  Bienvenido a ... Un lugar para comprar de todo
+                  Bienvenido a Local. Un lugar para comprar de todo
                 </h2>
               </div>
               <div className="basis-1/2 relative h-[10rem] w-fit px-5">
@@ -37,7 +37,7 @@ const DialogClientBusiness = () => {
               </div>
 
               <div className="basis-1/3 border-t border-gray-400 flex justify-center items-center">
-                <AlreadyAnAccount
+                <AlreadyAnAccount link='/Login'
                   message="Ya tienes cuenta?"
                   buttonMessage="Inicia sesión"
                 />

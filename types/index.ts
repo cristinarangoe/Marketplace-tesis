@@ -119,3 +119,13 @@ export interface Address {
 	neighbourhood: string;
 	nameRecipient: string;
 }
+
+export interface AddressDB {
+	state: string;
+	city: string;
+	street: string;
+	floor: string;
+	neighbourhood: string;
+	nameRecipient: string;
+	
+}

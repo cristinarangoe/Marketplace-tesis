@@ -11,11 +11,11 @@ import { useRouter } from "next/router";
 import { NextPage } from "next";
 import { NextPageWithLayout } from "../../_app";
 import { DefaultLayout } from "../../../layouts/DefaultLayout";
+import Loading from "../../../components/Navbar-Navigation/Loading";
 
-const ProductCategory : NextPageWithLayout = () => {
-
-	const router = useRouter();
-	const category = router.query.ProductCategory;
+const ProductCategory: NextPageWithLayout = () => {
+  const router = useRouter();
+  const category = router.query.ProductCategory;
 
   const { data, error } = useSWR<Item[], Error>(
     `${CLIENT_URL}/products/${category}`,
@@ -29,7 +29,7 @@ const ProductCategory : NextPageWithLayout = () => {
       </div>
     );
 
-  if (!data) return <p>loading</p>;
+  if (!data) return <Loading />;
 
   let products: Item[] = data;
   return (
@@ -41,9 +41,9 @@ const ProductCategory : NextPageWithLayout = () => {
       </div>
     </div>
   );
-}
+};
 ProductCategory.getLayout = function getLayout(page: ReactElement) {
-	return <DefaultLayout>{page}</DefaultLayout>;
+  return <DefaultLayout>{page}</DefaultLayout>;
 };
 
 export default ProductCategory;

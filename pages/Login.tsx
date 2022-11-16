@@ -17,6 +17,7 @@ function LogIn() {
 				<FormLogIn />
 				<div className="mt-3">
 					<AlreadyAnAccount
+					link='/Register'
 						message="Aún no tienes cuenta?"
 						buttonMessage="Registrate"
 					/>

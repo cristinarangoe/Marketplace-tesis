@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import CheckoutProductItem from "../../components/Cart/CheckoutProductItem";
 import GoBack from "../../components/Navbar-Navigation/GoBack";
 import { useCartContext } from "../../Context/Index";
@@ -10,6 +10,8 @@ import { userSignal } from "../../signals/userSignal";
 import useSWR from "swr";
 import { CLIENT_URL, generateOrder } from "../../lib/client";
 import fetcher from "../../lib/utils";
+import AddAddress from "../../components/Cart/AddAddress";
+import { useRouter } from "next/router";
 
 type FormData = {
   paymentMethod: any;
@@ -18,6 +20,8 @@ type FormData = {
 
 function Checkout() {
   const { productsCartProp, clearProp, totalCostProp } = useCartContext();
+  let router= useRouter()
+
   const {
     register,
     setValue,
@@ -35,37 +39,40 @@ function Checkout() {
   let addreses: Address[] | undefined = data;
 
   const onSubmit = handleSubmit(async (dataForm) => {
-	const address: Address = JSON.parse(dataForm.address)
-	const order : Order = {
-		client : {
-			_id: datosComprador!.data._id,
-			email: datosComprador!.data.email,
-			name: `${datosComprador!.data.firstName} ${datosComprador!.data.firstLastName}`,
-			id: datosComprador!.data.ID,
-			idType: datosComprador!.data.IDType,
-			phone: datosComprador!.data.phone
-		},
-		// address : JSON.parse(dataForm.address),
-		address : {
-			state : address.state,
-			city : address.city,
-			street: address.street,
-			floor: address.floor,
-			neighbourhood: address.neighbourhood,
-			nameRecipient: address.nameRecipient
-		},
-		paymentMethod: dataForm.paymentMethod,
-		products: productsCartProp,
-		totalPrice: totalCostProp,
-		idUser: datosComprador!.data._id,
-	};
-	const a = await generateOrder(order)
-	console.log(a)
+    const address: Address = JSON.parse(dataForm.address);
+    const order: Order = {
+      client: {
+        _id: datosComprador!.data._id,
+        email: datosComprador!.data.email,
+        name: `${datosComprador!.data.firstName} ${
+          datosComprador!.data.secondName
+        } ${datosComprador!.data.firstLastName} ${
+          datosComprador!.data.secondLastName
+        }`,
+        id: datosComprador!.data.ID,
+        idType: datosComprador!.data.IDType,
+        phone: datosComprador!.data.phone,
+      },
+      // address : JSON.parse(dataForm.address),
+      address: {
+        state: address.state,
+        city: address.city,
+        street: address.street,
+        floor: address.floor,
+        neighbourhood: address.neighbourhood,
+        nameRecipient: address.nameRecipient,
+      },
+      paymentMethod: dataForm.paymentMethod,
+      products: productsCartProp,
+      totalPrice: totalCostProp,
+      idUser: datosComprador!.data._id,
+    };
+
+    const a = await generateOrder(order);
+    router.push(`/marketplace/FinishedOrder`)
+    console.log(a);
   });
 
-
-
-  console.log("hola" + addreses);
   return (
     <div>
       <GoBack link="/marketplace/Cart" text="Carrito" />
@@ -92,6 +99,15 @@ function Checkout() {
             <div>
               <h2 className="text-lg text-gray-400">02</h2>
               <h2 className="text-2xl font-semibold">Entrega</h2>
+              {errors.address?.type === "required" ? (
+                <p className="text-base mt-3 text-red-500">
+                  Selecciona por favor tu dirección de entrega.
+                </p>
+              ) : (
+                <p className="text-base mt-3">
+                  Selecciona por favor tu dirección de entrega.
+                </p>
+              )}
               {addreses != undefined ? (
                 <div className="flex flex-col">
                   {addreses.map((address, index) => (
@@ -230,7 +246,11 @@ function Checkout() {
               </div>
             </div>
           </div>
-          <input type="submit" className="bg-medium-violet px-2 py-1 rounded-md font-semibold text-tiffany-green my-3 w-full border-2 border-medium-violet" value="Finalizar la compra" />
+          <input
+            type="submit"
+            className="bg-medium-violet px-2 py-1 rounded-md font-semibold text-tiffany-green my-3 w-full border-2 border-medium-violet"
+            value="Finalizar la compra"
+          />
           {/* <button className="bg-medium-violet px-2 py-1 rounded-md font-semibold text-tiffany-green my-3 w-full border-2 border-medium-violet">
             <Link href="/Marketplace/Cart">Finalizar la compra</Link>
           </button> */}

@@ -1,6 +1,7 @@
 import React from "react";
 import useSWR from "swr";
 import BusinessItem from "../../components/MarketplaceBusiness/BusinessItem";
+import Loading from "../../components/Navbar-Navigation/Loading";
 import Navbar from "../../components/Navbar-Navigation/Navbar";
 import { CLIENT_URL } from "../../lib/client";
 import fetcher from "../../lib/utils";
@@ -19,7 +20,10 @@ function BusinessesPage() {
       </div>
     );
 
-  if (!data) return <p>loading</p>;
+    if (!data)
+    return (
+      <Loading/>
+    );
 
   let businesses : BusinessInMarketplace[] = data; 
   console.log(data)

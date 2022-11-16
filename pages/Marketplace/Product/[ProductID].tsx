@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
 import useSWR from "swr";
 import AddProductCartButton from "../../../components/Cart/AddProductCartButton";
+import Loading from "../../../components/Navbar-Navigation/Loading";
 import Navbar from "../../../components/Navbar-Navigation/Navbar";
 import ProductToCart from "../../../components/Products/ProductToCart";
 import { DefaultLayout } from "../../../layouts/DefaultLayout";
@@ -28,7 +29,9 @@ const ProductDetail : NextPageWithLayout = () => {
       </div>
     );
 
-  if (!data) return <p>loading</p>;
+  if (!data) return (
+    <Loading/>
+  );
 
   let producto: Item | undefined = data;
 

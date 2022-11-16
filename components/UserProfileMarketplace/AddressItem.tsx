@@ -1,8 +1,8 @@
 import React from "react";
-import { address } from "../../types";
+import { Address } from "../../types";
 import DialogEditAddress from "./DialogEditAddress";
 
-function AddressItem({ address }: { address: address }) {
+function AddressItem({ address }: { address: Address }) {
   return (
     <div className="rounded-lg bg-tiffany-green/5 px-5 py-3 border-2 shadow-md">
       <div>
@@ -14,7 +14,7 @@ function AddressItem({ address }: { address: address }) {
           <p>
             {address.city},{address.state}
           </p>
-            <DialogEditAddress address={address}/>
+            <DialogEditAddress address={address} />
         </div>
       </div>
     </div>
