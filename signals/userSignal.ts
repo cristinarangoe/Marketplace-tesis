@@ -31,7 +31,6 @@ export const setUserSession = async (user: SupabaseAuthUser) => {
 
 const dispose = effect(() => {
 	if (typeof window !== 'undefined') {
-		console.log('ahi vamo');
 		if (userSignal.value == undefined) {
 			const tmp = localStorage.getItem('userSession');
 			if (tmp) {

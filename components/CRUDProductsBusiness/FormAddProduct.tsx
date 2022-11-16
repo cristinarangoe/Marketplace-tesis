@@ -24,8 +24,8 @@ type FormData = {
 		type: string;
 		options: string;
 	}[];
-	image?: string;
-	price?: number;
+	image: string;
+	price: number;
 };
 
 interface SectionsProps {
@@ -284,12 +284,23 @@ const FormAddProduct = () => {
 		if (v.target.value === 'false') setHasVariants(false);
 	};
 
-	const onSubmit = handleSubmit((data) => {
+	const onSubmit = handleSubmit(async (data) => {
 		if (data.hasVariants === 'true') {
 			setGenerating(true);
 			const v = generateVariants(data);
 			setVariants(v);
 			setGenerating(false);
+		} else {
+			const tmp: DBProduct = {
+				idBusiness: userSignal.value!.data._id,
+				businessType: (userSignal.value!.data as BusinessInfo).businessType,
+				name: data.name,
+				description: data.description,
+				image: data.image,
+				price: data.price,
+			};
+			const res = await saveProducts([tmp]);
+			console.log(res);
 		}
 	});
 

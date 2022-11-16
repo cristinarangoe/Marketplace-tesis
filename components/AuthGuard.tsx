@@ -29,7 +29,7 @@ export const AuthGuardClient = ({ children }: AuthGuardProps) => {
 		) {
 			router.push('/');
 		}
-	}, []);
+	}, [userSignal.value]);
 
 	return <>{children}</>;
 };
@@ -47,7 +47,7 @@ export const AuthGuardBusiness = ({ children }: AuthGuardProps) => {
 		) {
 			router.push('/');
 		}
-	}, []);
+	}, [userSignal.value]);
 
 	return <>{children}</>;
 };

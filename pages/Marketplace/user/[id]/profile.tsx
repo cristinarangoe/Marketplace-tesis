@@ -10,18 +10,6 @@ import { ClientInfo } from '../../../../types/client';
 import { NextPageWithLayout } from '../../../_app';
 
 const UserProfile: NextPageWithLayout = () => {
-	// let user: ClientSchema = {
-	// 	firstName: 'cristina',
-	// 	firstLastName: 'Arango',
-	// 	secondLastName: 'Escobar',
-	// 	phone: 3217397457,
-	// 	email: 'cristinarangoe@hotmail.com',
-	// 	IDType: 'CC',
-	// 	ID: '1017273163',
-	// 	password: '1234',
-	// 	confirmPassword: '1234',
-	// };
-
 	const user = userSignal.value?.data as ClientInfo;
 
 	return (
