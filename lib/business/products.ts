@@ -7,6 +7,8 @@ const CREATE_PRODUCT_URL =
 export const URL_BUSINESS =
 	'https://readbusinessworker.cristinarangoe2584.workers.dev/business';
 
+// export const URL_BUSINESS = 'http://localhost:5173/business';
+
 export async function saveProducts(p: DBProduct[]) {
 	try {
 		// const formdata = new FormData();
