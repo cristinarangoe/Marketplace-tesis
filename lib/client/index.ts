@@ -27,9 +27,68 @@ export async function generateOrder(order: Order){
 	// 	body: JSON.stringify(order),
 	// });
 	// return data;
-	const data = await fetch(`http://localhost:5173/client/createOrder`, {
+	const data = await fetch(`${CLIENT_URL}/createOrder`, {
 		method: 'POST',
 		body: JSON.stringify(order),
 	});
 	return data;
+}
+
+export interface OrderUpdatableFields {
+	state: string;
+	city: string;
+	street: string;
+	floor: string;
+	neighbourhood: string;
+	nameRecipient: string;
+}
+
+export async function updateAddress(
+	p: OrderUpdatableFields,
+	idAddress: string
+) {
+	try {
+		console.log(idAddress)
+		console.log(idAddress)
+		const res = await fetch(`${CLIENT_URL}/address/update`, {
+			method: 'PUT',
+			body: JSON.stringify({
+				id: idAddress,
+				data: p,
+			}),
+		});
+		return res;
+	} catch (e) {
+		console.log("cristina")
+		console.log(e);
+	}
+}
+
+export interface UserUpdatableFields {
+	firstName: string;
+	secondName: string;
+	firstLastName: string;
+	secondLastName: string;
+	phone: number;
+	IDType: string;
+	ID: string;
+}
+
+export async function updateUser(
+	p: UserUpdatableFields,
+	idUser: string
+) {
+	
+	try {
+		const res = await fetch(`${CLIENT_URL}/user/update`, {
+			method: 'PUT',
+			body: JSON.stringify({
+				id: idUser,
+				data: p,
+			}),
+		});
+		return res;
+	} catch (e) {
+		console.log(e);
+	}
 }

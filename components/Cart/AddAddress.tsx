@@ -24,7 +24,7 @@ function AddAddress() {
 	const onSubmit = handleSubmit(async (data) => {
 		const res = await saveAddress({
 			idUser: userSignal.value!.data._id,
-			...data,
+			...data
 		});
 		console.log(res);
 	});

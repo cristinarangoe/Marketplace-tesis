@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { useForm } from 'react-hook-form';
 import { ClientSchema } from '../../types';
 import { ClientInfo } from '../../types/client';
+import { updateUser } from '../../lib/client';
 
 type FormData = {
 	firstName: string;
@@ -22,7 +23,12 @@ export default function DialogEditProfile({ client }: { client: ClientInfo }) {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormData>();
-	const onSubmit = handleSubmit((data) => console.log(data));
+	const onSubmit = handleSubmit(async(data) => {
+		console.log(data)
+		const tmp = await updateUser(data, client._id);
+		console.log(tmp);
+		// window.location.reload();
+	});
 	return (
 		<Dialog.Root>
 			<Dialog.Trigger>

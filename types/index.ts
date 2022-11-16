@@ -112,6 +112,7 @@ export interface BusinessInMarketplace{
 }
 
 export interface Address {
+	_id: string;
 	state: string;
 	city: string;
 	street: string;

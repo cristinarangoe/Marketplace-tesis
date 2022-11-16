@@ -2,6 +2,7 @@ import React from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useForm } from 'react-hook-form';
 import { Address } from '../../types';
+import { updateAddress } from '../../lib/client';
 
 type FormData = {
 	state: string;
@@ -19,10 +20,11 @@ function DialogEditAddress({ address }: { address: Address }) {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormData>();
-	const onSubmit = handleSubmit((data) => {
-		console.log('hola');
-		console.log(data);
+	const onSubmit = handleSubmit(async(data) => {
+		const tmp = await updateAddress(data, address._id);
+		window.location.reload();
 	});
+	console.log(address._id)
 	return (
 		<Dialog.Root>
 			<Dialog.Trigger>
