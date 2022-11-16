@@ -1,11 +1,8 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import Navbar from '../../../../components/Navbar-Navigation/Navbar';
 import DialogEditProfile from '../../../../components/UserProfileMarketplace/DialogEditProfile';
 import UserProfileCharacteristic from '../../../../components/UserProfileMarketplace/UserProfileCharacteristic';
-import VerticalBarUser from '../../../../components/UserProfileMarketplace/VerticalBarUser';
 import UserLayout from '../../../../layouts/UserLayout';
 import { userSignal } from '../../../../signals/userSignal';
-import { ClientSchema } from '../../../../types';
 import { ClientInfo } from '../../../../types/client';
 import { NextPageWithLayout } from '../../../_app';
 
