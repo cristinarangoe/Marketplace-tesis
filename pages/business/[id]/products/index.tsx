@@ -8,41 +8,11 @@ import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import fetcher from '../../../../lib/utils';
 import { URL_BUSINESS } from '../../../../lib/business/products';
+import { ProducstList } from '../../../../components/CRUDProductsBusiness/ProducstList';
 
 const CRUDProductBusiness: NextPageWithLayout = () => {
-	// let products: Item[] = [
-	// 	{
-	// 		id: '001',
-	// 		nombre: 'Plato mexicano ',
-	// 		precio: 12000,
-	// 		descripcion: 'plato con deliciosos ingredientes',
-	// 		imagen: 'https://c90c277d9089aefac81645bdd3cfe3e2.r2.cloudflarestorage.com/marketplace-images/platoMexicano.png',
-	// 		categoria: 'Mexicano',
-	// 		stock: 5,
-	// 	},
-	// 	{
-	// 		id: '002',
-	// 		nombre: 'Nachos',
-	// 		precio: 10000,
-	// 		descripcion: 'plato con deliciosos ingredientes',
-	// 		imagen: '/Logo.png',
-	// 		categoria: 'Mexicano',
-	// 		stock: 5,
-	// 	},
-	// ];
-
 	const router = useRouter();
 	const { id } = router.query;
-
-	const { data, error } = useSWR(`${URL_BUSINESS}/${id}/products`, fetcher);
-
-	if (error) return <p>{JSON.stringify(error)}</p>;
-
-	if (!data) return <p>loading</p>;
-
-	const products: Item[] = data as Item[];
-
-	console.log(data);
 
 	return (
 		<>
@@ -73,11 +43,7 @@ const CRUDProductBusiness: NextPageWithLayout = () => {
 						</div>
 						<div className="basis-1/6"></div>
 					</div>
-					<div>
-						{products.map((product, key) => (
-							<ProductItem key={key} producto={product} />
-						))}
-					</div>
+					<ProducstList />
 				</div>
 			</div>
 		</>

@@ -2,7 +2,7 @@ import { Product } from './../../types/products';
 import { Item } from '../../types';
 import { DBProduct } from '../../types/products';
 
-const URL =
+const CREATE_PRODUCT_URL =
 	'https://createproductworker.cristinarangoe2584.workers.dev/business/createProduct';
 export const URL_BUSINESS = 'http://localhost:5173/business';
 
@@ -50,3 +50,5 @@ export async function updateProduct(
 		console.log(e);
 	}
 }
+
+export async function deleteProduct(productId: string) {}

@@ -12,7 +12,11 @@ const ProductItem = ({ producto }: { producto: Item }) => {
 			<div className="relative basis-1/6 h-[6rem]">
 				<div className="h-max-[6rem] w-auto ">
 					<Image
-						src={producto.image}
+						src={
+							producto.image.includes('http')
+								? producto.image
+								: 'https://pub-519dfc423646485c8e75fc48e6df6ae7.r2.dev/noImage.jpeg'
+						}
 						alt={producto.name}
 						layout="fill"
 						objectFit="contain"

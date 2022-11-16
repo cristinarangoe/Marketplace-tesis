@@ -1,7 +1,7 @@
 export interface Product {
 	name: string;
 	description: string;
-	characteristics: {
+	characteristics?: {
 		type: string;
 		value: string;
 	}[];
