@@ -30,10 +30,8 @@ function DialogAddAddress() {
 	});
 	return (
 		<Dialog.Root>
-			<Dialog.Trigger>
-				<button className="font-semibold bg-medium-violet text-white py-3 px-6 rounded-lg">
+			<Dialog.Trigger className="font-semibold bg-medium-violet text-white py-3 px-6 rounded-lg">
 					Añadir dirección
-				</button>
 			</Dialog.Trigger>
 			<Dialog.Portal className="relative">
 				<Dialog.Portal className="bg-[hsla(0, 0%, 0%, 0.439)] bg-fixed inset-0">

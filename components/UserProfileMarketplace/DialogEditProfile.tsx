@@ -31,10 +31,8 @@ export default function DialogEditProfile({ client }: { client: ClientInfo }) {
 	});
 	return (
 		<Dialog.Root>
-			<Dialog.Trigger>
-				<button className="font-semibold bg-medium-violet text-white py-3 px-6 rounded-lg mt-8 w-1/4">
+			<Dialog.Trigger className="font-semibold bg-medium-violet text-white py-3 px-6 rounded-lg mt-8 w-1/4">
 					Editar información
-				</button>
 			</Dialog.Trigger>
 			<Dialog.Portal className="relative">
 				<Dialog.Overlay className="bg-[hsla(0, 0%, 0%, 0.439)] bg-fixed inset-0">

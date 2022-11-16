@@ -11,7 +11,6 @@ export const LogoutDialog = () => {
 	return (
 		<AlertDialog.Root open={open} onOpenChange={setOpen}>
 			<AlertDialog.Trigger>
-				<button>
 					<div className="flex flex-row mt-6 cursor-pointer">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +29,6 @@ export const LogoutDialog = () => {
 
 						<h3 className="pl-3">Cerrar sesión</h3>
 					</div>
-				</button>
 				<AlertDialog.Overlay>
 					<div className="h-screen w-screen bg-black/10 fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-0"></div>
 					<AlertDialog.Content className="bg-white rounded-md shadow-lg fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-2/6 p-5">

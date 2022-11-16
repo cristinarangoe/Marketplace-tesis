@@ -15,12 +15,14 @@ const Product = ({ product }: { product: Item }) => {
     >
       <div className="relative h-[10rem] w-auto ">
         <Link href={`/marketplace/Product/${product._id}`}>
+          <a>
           <Image
             src={product.image}
             alt={product.name}
             layout="fill"
             objectFit="contain"
           />
+          </a>
         </Link>
       </div>
       <div className="flex flex-col h-1/2">

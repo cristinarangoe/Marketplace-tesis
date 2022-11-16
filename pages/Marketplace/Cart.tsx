@@ -97,7 +97,7 @@ function Cart() {
 							<div className="bg-tiffany-green px-2 py-3 rounded-md font-semibold text-white my-3 w-4/5 text-center">
 								<AlertDialog.Root open={open} onOpenChange={setOpen}>
 									<AlertDialog.Trigger>
-										<button className="">Vaciar el carrito</button>
+										Vaciar el carrito
 										<AlertDialog.Overlay>
 											<div className="h-screen w-screen bg-black/10 fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] z-0"></div>
 											<AlertDialog.Content className="bg-white rounded-md shadow-lg fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-2/6 p-5">
