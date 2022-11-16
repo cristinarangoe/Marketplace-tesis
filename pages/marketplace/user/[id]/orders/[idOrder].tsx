@@ -1,3 +1,4 @@
+
 import { useRouter } from 'next/router';
 import React, { ReactElement } from 'react';
 import useSWR from 'swr';
@@ -92,6 +93,7 @@ const SpecificOrderUser: NextPageWithLayout = () => {
               <h3 className="pt-2">id: order.business.id</h3>
             </div>
           </div> */}
+
 					<div className="bg-gray-100 shadow-md px-3 py-5 mt-5">
 						<h2 className="text-2xl mb-5 font-medium">
 							Información del cliente y envío
@@ -115,6 +117,7 @@ const SpecificOrderUser: NextPageWithLayout = () => {
 
 SpecificOrderUser.getLayout = function getLayout(page: ReactElement) {
 	return <UserLayout>{page}</UserLayout>;
+
 };
 
 export default SpecificOrderUser;
